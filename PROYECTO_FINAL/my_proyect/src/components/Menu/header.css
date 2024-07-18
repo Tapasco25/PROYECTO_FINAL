@@ -1,0 +1,191 @@
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #e7c2ec7e; /* Fondo blanco */
+}
+
+.header {
+    display: flex;
+    background-color: #6a1b9a; /* Púrpura (color lila) */
+    justify-content: space-between;
+    padding: 20px;
+    padding-left: 40px;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.header .container {
+    display: flex;
+}
+
+.header .barra {
+    display: flex;
+    justify-content: right;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap !important;
+}
+
+.header .logo {
+    width: 100px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.header .logo:hover {
+    transform: rotate(360deg);
+}
+
+.header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header nav a:hover {
+    color: #ffb74d; /* Cambio de color al pasar el ratón */
+}
+
+.header button {
+    background-color: #6a1b9a; /* Púrpura (mismo que el fondo del header) */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.header button:hover {
+    background-color: #4a148c; /* Púrpura más oscuro para el hover */
+}
+
+.barra a {
+    color: #fff;
+    text-decoration: none;
+    margin: 20px;
+}
+
+h3 {
+    color: #fff;
+    margin: 20px;
+    padding-left: 20px;
+}
+
+.imagenes {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    scrollbar-color: #ffffff #ffffff;
+}
+
+.imagen {
+    height: 120px;
+    width: 200px;
+    margin-left: 5px;
+}
+
+/* Ajustes para asegurar que las imágenes tengan el mismo tamaño */
+.imagen img {
+    width: 100%; /* Imágenes ocupan el 100% del contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+/* Ajustes para alinear contenido y botones */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Espaciado uniforme entre elementos */
+    width: 200px; /* Ajuste según el tamaño deseado */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto; 
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.product-card h3 {
+    font-size: 18px; /* Tamaño del título ajustado */
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center; /* Alinear texto al centro */
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #666;
+    text-align: center; /* Alinear texto al centro */
+    margin-bottom: 16px;
+}
+
+.product-card button {
+    background-color: #6a1b9a; /* Púrpura (mismo que el fondo del header) */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%; /* Botón ocupa el 100% del contenedor */
+}
+
+.product-card button:hover {
+    background-color: #4a148c; /* Púrpura más oscuro para el hover */
+}
+
+@media (max-width: 568px) {
+    .barra.open {
+        right: 0;
+        top: 75px;
+    }
+
+    .barra {
+        height: 100%;
+        width: 250px;
+        background: #6a1b9a; /* Púrpura (mismo que el fondo del header) */
+        position: fixed;
+        top: 70px;
+        right: -250px;
+        z-index: 0;
+        transition: right 0.3s ease;
+    }
+
+    .galeria {
+        display: block;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .contenido {
+        padding: 0 10px; /* Reducir el espacio alrededor del contenido para pantallas pequeñas */
+    }
+
+    .header .container {
+        width: 100%;
+        flex-direction: column; /* Apilar elementos del menú en pantallas pequeñas */
+        align-items: center; /* Centrar elementos del menú en pantallas pequeñas */
+    }
+}
