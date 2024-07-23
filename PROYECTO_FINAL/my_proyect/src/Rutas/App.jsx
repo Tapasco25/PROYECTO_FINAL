@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
-import Product from './components/Product';
-import { useFetch } from './hook/useGetProducts';
-import Header from './components/Menu/Header';
+import '../App.css';
+import Product from '../components/Product';
+import { useFetch } from '../hook/useGetProducts';
+import Header from '../components/Menu/Header';
 
 export default function App() {
   const { data: electronics } = useFetch(
