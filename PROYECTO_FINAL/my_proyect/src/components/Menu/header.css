@@ -66,97 +66,6 @@ html, body {
     background-color: #4a148c; /* Púrpura más oscuro para el hover */
 }
 
-.barra a {
-    color: #fff;
-    text-decoration: none;
-    margin: 20px;
-}
-
-h3 {
-    color: #fff;
-    margin: 20px;
-    padding-left: 20px;
-}
-
-.imagenes {
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    width: 100%;
-    scrollbar-color: #ffffff #ffffff;
-}
-
-.imagen {
-    height: 120px;
-    width: 200px;
-    margin-left: 5px;
-}
-
-/* Ajustes para asegurar que las imágenes tengan el mismo tamaño */
-.imagen img {
-    width: 100%; /* Imágenes ocupan el 100% del contenedor */
-    height: auto; /* Altura automática para mantener la proporción */
-}
-
-/* Ajustes para alinear contenido y botones */
-.product-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between; /* Espaciado uniforme entre elementos */
-    width: 200px; /* Ajuste según el tamaño deseado */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    background-color: #ffffff; /* Fondo blanco */
-    color: #333;
-    transition: all 0.3s;
-    margin-top: 20px;
-}
-
-.product-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transform: scale(1.02);
-}
-
-.product-card img {
-    width: 100%;
-    height: auto; 
-    border-radius: 8px;
-    margin-bottom: 16px;
-}
-
-.product-card h3 {
-    font-size: 18px; /* Tamaño del título ajustado */
-    font-weight: bold;
-    margin-bottom: 8px;
-    text-align: center; /* Alinear texto al centro */
-}
-
-.product-card p {
-    font-size: 14px;
-    color: #666;
-    text-align: center; /* Alinear texto al centro */
-    margin-bottom: 16px;
-}
-
-.product-card button {
-    background-color: #6a1b9a; /* Púrpura (mismo que el fondo del header) */
-    color: #fff; /* Texto blanco */
-    border: none;
-    border-radius: 4px;
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%; /* Botón ocupa el 100% del contenedor */
-}
-
-.product-card button:hover {
-    background-color: #4a148c; /* Púrpura más oscuro para el hover */
-}
-
 @media (max-width: 568px) {
     .barra.open {
         right: 0;
@@ -178,6 +87,7 @@ h3 {
         display: block;
     }
 }
+
 @media only screen and (max-width: 600px) {
     .contenido {
         padding: 0 10px; /* Reducir el espacio alrededor del contenido para pantallas pequeñas */
@@ -188,4 +98,10 @@ h3 {
         flex-direction: column; /* Apilar elementos del menú en pantallas pequeñas */
         align-items: center; /* Centrar elementos del menú en pantallas pequeñas */
     }
+}
+
+h3 {
+    color: #fff;
+    margin: 20px;
+    padding-left: 20px;
 }
