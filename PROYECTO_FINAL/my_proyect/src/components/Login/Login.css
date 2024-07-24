@@ -1,0 +1,48 @@
+.login-form {
+    max-width: 300px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #6c5ce7; /* Morado claro */
+  }
+  
+  .login-input {
+    width: 90%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-input:focus {
+    border-color: #6c5ce7; /* Morado claro */
+    box-shadow: 0 0 5px rgba(108, 92, 231, 0.5);
+  }
+  
+  .login-error {
+    color: #ff69b4; /* Lila */
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    width: 100%;
+    height: 40px;
+    background-color: #6c5ce7; /* Morado claro */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #7a6bc9; /* Morado claro oscuro */
+  }

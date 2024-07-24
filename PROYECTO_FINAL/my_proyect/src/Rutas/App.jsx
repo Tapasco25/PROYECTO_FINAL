@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import Product from '../components/Product';
 import { useFetch } from '../hook/useGetProducts';
 import Header from '../components/Menu/Header';
+import LoginForm from '../components/Login';
 
 export default function App() {
+  const [openLogin, setOpenLogin] = useState(false);
+
+  const mostrarLogin = () => {
+    setOpenLogin(!openLogin);
+  }
+
   const { data: electronics } = useFetch(
     'https://fakestoreapi.com/products/category/electronics'
   );
@@ -23,7 +30,8 @@ export default function App() {
 
   return (
     <>
-      <Header />
+      <Header mostrarLogin={mostrarLogin} />
+      {openLogin && <LoginForm />}
       <h1 className='title'>STYLES AND FASHION NICOL</h1>
       <div className='category' name='electronics'>
         <h1>Electronics</h1>
@@ -60,6 +68,7 @@ export default function App() {
           ))}
         </div>
       </div>
+      
     </>
   );
 }
