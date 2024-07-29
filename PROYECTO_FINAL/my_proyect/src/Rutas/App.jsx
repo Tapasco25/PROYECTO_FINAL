@@ -3,14 +3,15 @@ import '../App.css';
 import Product from '../components/Product';
 import { useFetch } from '../hook/useGetProducts';
 import Header from '../components/Menu/Header';
-import LoginForm from '../components/Login';
+import RegisterForm from '../components/Register';
 
 export default function App() {
-  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
 
-  const mostrarLogin = () => {
-    setOpenLogin(!openLogin);
+  const mostrarRegister = () => {
+    setOpenRegister(!openRegister);
   }
+
 
   const { data: electronics } = useFetch(
     'https://fakestoreapi.com/products/category/electronics'
@@ -30,8 +31,8 @@ export default function App() {
 
   return (
     <>
-      <Header mostrarLogin={mostrarLogin} />
-      {openLogin && <LoginForm />}
+      <Header mostrarRegister={mostrarRegister} />
+      {openRegister && <RegisterForm/> }
       <h1 className='title'>STYLES AND FASHION NICOL</h1>
 
       
