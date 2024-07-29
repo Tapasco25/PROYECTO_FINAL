@@ -33,6 +33,8 @@ export default function App() {
       <Header mostrarLogin={mostrarLogin} />
       {openLogin && <LoginForm />}
       <h1 className='title'>STYLES AND FASHION NICOL</h1>
+
+      
       <div className='category' name='electronics'>
         <h1>Electronics</h1>
         <div className='product-container'>

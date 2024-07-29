@@ -17,7 +17,7 @@ function Header({ mostrarLogin }) {
                        
                     </nav>
                 </div>
-                <div><button onClick={mostrarLogin}>iniciar sesion</button></div>
+                <div><button onClick={mostrarLogin} className='btn-inc'>iniciar sesion</button></div>
                 <button className="class-menu-btn" id="menu-btn">&#9776;</button>
             </header>
         </div>

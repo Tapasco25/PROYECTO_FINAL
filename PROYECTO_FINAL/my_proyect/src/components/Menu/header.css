@@ -33,10 +33,12 @@ html, body {
     width: 100px;
     border-radius: 50%;
     transition: transform 0.3s ease;
+    
 }
 
 .header .logo:hover {
     transform: rotate(360deg);
+    box-shadow: 0 0 20px rgba(211, 158, 255, 0.884);
 }
 
 .header nav a {
@@ -64,6 +66,11 @@ html, body {
 
 .header button:hover {
     background-color: #4a148c; /* Púrpura más oscuro para el hover */
+}
+
+.btn-inc{
+    padding: 30px;
+    margin: 30px;
 }
 
 @media (max-width: 568px) {
