@@ -4,9 +4,11 @@ import Product from '../components/Product';
 import { useFetch } from '../hook/useGetProducts';
 import Header from '../components/Menu/Header';
 import RegisterForm from '../components/Register';
+import { getCartProducts, setCartProducts } from '../utils/localStorage';
 
 export default function App() {
   const [openRegister, setOpenRegister] = useState(false);
+  const [productsInCart, setProductsInCart] = useState(getCartProducts())
 
   const mostrarRegister = () => {
     setOpenRegister(!openRegister);
@@ -29,18 +31,27 @@ export default function App() {
     "https://fakestoreapi.com/products/category/women's%20clothing"
   );
 
+  const addProductCart = (product) => {
+    const isAdded = productsInCart.some((pic) => product.id == pic.id)
+
+    const newProducstInCart = isAdded ? productsInCart.map((pic) => ({ ...pic, quantity: pic.id == product.id ? pic.quantity + 1 : pic.quantity })) : [...productsInCart, { ...product, quantity: 1 }]
+
+    setProductsInCart(newProducstInCart)
+    setCartProducts(newProducstInCart)
+  }
+
   return (
     <>
-      <Header mostrarRegister={mostrarRegister} />
-      {openRegister && <RegisterForm/> }
+      <Header productsInCart={productsInCart} mostrarRegister={mostrarRegister} />
+      {openRegister && <RegisterForm />}
       <h1 className='title'>STYLES AND FASHION NICOL</h1>
 
-      
+
       <div className='category' name='electronics'>
         <h1>Electronics</h1>
         <div className='product-container'>
           {electronics && electronics.map((product, index) => (
-            <Product key={index} {...product} />
+            <Product onClick={() => addProductCart(product)} key={index} {...product} />
           ))}
         </div>
       </div>
@@ -49,7 +60,7 @@ export default function App() {
         <h1>Jewelery</h1>
         <div className='product-container'>
           {jewelery && jewelery.map((product, index) => (
-            <Product key={index} {...product} />
+            <Product onClick={() => addProductCart(product)} key={index} {...product} />
           ))}
         </div>
       </div>
@@ -58,7 +69,7 @@ export default function App() {
         <h1>Men's Clothing</h1>
         <div className='product-container'>
           {mensclothing && mensclothing.map((product, index) => (
-            <Product key={index} {...product} />
+            <Product onClick={() => addProductCart(product)} key={index} {...product} />
           ))}
         </div>
       </div>
@@ -67,11 +78,11 @@ export default function App() {
         <h1>Women's Clothing</h1>
         <div className='product-container'>
           {womensclothing && womensclothing.map((product, index) => (
-            <Product key={index} {...product} />
+            <Product onClick={() => addProductCart(product)} key={index} {...product} />
           ))}
         </div>
       </div>
-      
+
     </>
   );
 }

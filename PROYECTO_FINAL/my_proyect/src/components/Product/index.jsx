@@ -1,7 +1,8 @@
 import React from 'react';
 import './Product.css';
+import { setCartProducts } from '../../utils/localStorage';
 
-const Product = ({ id, image, title, description, price, rating }) => {
+const Product = ({ id, image, title, description, price, rating, onClick }) => {
   return (
     <div className='product-card'>
       <img className='product-image' src={image} alt={title} />
@@ -14,8 +15,7 @@ const Product = ({ id, image, title, description, price, rating }) => {
         </div>
       </div>
       <div className='div_btn-comprar'>
-        
-      <button className='btn-comprar'>Comprar</button>
+        <button onClick={onClick} className='btn-comprar'>Comprar</button>
       </div>
     </div>
   );

@@ -1,0 +1,21 @@
+.button_cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80px;
+    height: 40px;
+}
+
+.products_in_cart{
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -16px;
+    left: 20px;
+}
