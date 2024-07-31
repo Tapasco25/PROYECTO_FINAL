@@ -23,7 +23,7 @@ function Header({ productsInCart, mostrarRegister }) {
                         onClick={mostrarRegister}
                         className='btn-register'
                     >
-                        Registrarse
+                        SIGN IN
                     </button>
                 </div>
                 <button className="class-menu-btn" id="menu-btn">&#9776;</button>

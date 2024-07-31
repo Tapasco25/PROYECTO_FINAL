@@ -9,7 +9,7 @@
 
 .products_in_cart{
     position: absolute;
-    background-color: red;
+    background-color: rgba(197, 8, 249, 0.811);
     border-radius: 50%;
     height: 16px;
     width: 16px;

@@ -41,24 +41,24 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-form">
-      <label htmlFor="name" className="login-label">Nombre:</label>
-      <input type="text" id="name" value={name} onChange={(event) => setName(event.target.value)} className="login-input" />
+    <form onSubmit={handleSubmit} className="sign_in-form">
+      <label htmlFor="name" className="sign_in-label">Nombre:</label>
+      <input type="text" id="name" value={name} onChange={(event) => setName(event.target.value)} className="sign_in-input" />
       <br />
-      <label htmlFor="surname" className="login-label">Apellido:</label>
-      <input type="text" id="surname" value={surname} onChange={(event) => setSurname(event.target.value)} className="login-input" />
+      <label htmlFor="surname" className="sign_in-label">Apellido:</label>
+      <input type="text" id="surname" value={surname} onChange={(event) => setSurname(event.target.value)} className="sign_in-input" />
       <br />
-      <label htmlFor="email" className="login-label">Email:</label>
-      <input type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} className="login-input" />
+      <label htmlFor="email" className="sign_in-label">Email:</label>
+      <input type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} className="sign_in-input" />
       <br />
-      <label htmlFor="password" className="login-label">Contraseña:</label>
-      <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} className="login-input" />
+      <label htmlFor="password" className="sign_in-label">Contraseña:</label>
+      <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} className="sign_in-input" />
       <br />
-      <label htmlFor="confirm-password" className="login-label">Confirmar Contraseña:</label>
-      <input type="password" id="confirm-password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} className="login-input" />
+      <label htmlFor="confirm-password" className="sign_in-label">Confirmar Contraseña:</label>
+      <input type="password" id="confirm-password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} className="sign_in-input" />
       <br />
-      {error && <p className="login-error">{error}</p>}
-      <button type="submit" className="login-button">Registrarse</button>
+      {error && <p className="sign_in-error">{error}</p>}
+      <button type="submit" className="sign_in-button">SIGN IN</button>
     </form>
   );
 };
