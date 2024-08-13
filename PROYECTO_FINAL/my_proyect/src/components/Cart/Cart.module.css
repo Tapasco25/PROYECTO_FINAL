@@ -1,21 +1,78 @@
-.button_cart{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 80px;
-    height: 40px;
+.cartContainer {
+    background-color: #9c27b0;
+    padding: 2rem;
+    border-radius: 50px 0 50px 0; /* Bordes redondeados en esquinas opuestas */
 }
 
-.products_in_cart{
-    position: absolute;
-    background-color: rgba(197, 8, 249, 0.811);
-    border-radius: 50%;
-    height: 16px;
-    width: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -16px;
-    left: 20px;
+.title {
+    text-align: center;
+    margin: 2rem 0;
+    color: #fff;
+    font-size: 2rem; /* Tamaño del texto más grande */
+    font-style: italic; /* Texto en cursiva */
+    text-transform: uppercase; /* Texto en mayúsculas */
 }
+
+.emptyMessage {
+    text-align: center;
+    color: #fff;
+    font-size: 1.25rem; /* Tamaño del texto más grande */
+    font-style: italic; /* Texto en cursiva */
+}
+
+.productContainer {
+    border: none; /* Sin bordes */
+    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); /* Degradado suave */
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 20px 0 20px 0; /* Bordes redondeados en esquinas opuestas */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.productContainer h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem; /* Tamaño del texto más grande */
+    color: #4a148c; /* Un tono de morado oscuro */
+    text-shadow: 1px 1px 2px #b39ddb; /* Sombra en el texto */
+}
+
+.productContainer p {
+    margin: 0.75rem 0;
+    color: #6a1b9a; /* Un tono de morado */
+    line-height: 1.5;
+    font-style: italic; /* Texto en cursiva */
+}
+
+.removeButton {
+    background-color: #ab47bc; 
+    color: #fff; 
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 20px 0 20px 0; /* Bordes redondeados en esquinas opuestas */
+    transition: transform 0.3s ease; /* Suavizado de la transformación */
+}
+
+.removeButton:hover {
+    transform: scale(1.05); /* Leve agrandamiento en hover */
+}
+
+.clearButton {
+    background-color: #ab47bc;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 20px 0 20px 0; /* Bordes redondeados en esquinas opuestas */
+    margin-top: 20px;
+    transition: transform 0.3s ease; /* Suavizado de la transformación */
+}
+
+.clearButton:hover {
+    transform: scale(1.05); /* Leve agrandamiento en hover */
+}
+
+
+  

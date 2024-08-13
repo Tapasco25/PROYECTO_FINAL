@@ -1,0 +1,36 @@
+.cartIcon {
+    position: relative;
+  }
+  
+  .cartIconIcon {
+    font-size: 2.5rem; 
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .cartIconBadge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #d05d9e; 
+    color: #fff;
+    border-radius: 9999px; 
+    font-size: 0.875rem; 
+    font-weight: bold;
+  }
+  
+  .cartIconModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f3e5f5; 
+    border: 1px solid #9c27b0; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 50;
+    width: 20rem; 
+    max-height: 25rem; 
+    overflow-y: auto;
+  }
+  
