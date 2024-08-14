@@ -14,8 +14,8 @@
     right: 0;
     background-color: #d05d9e; 
     color: #fff;
-    border-radius: 9999px; 
-    font-size: 0.875rem; 
+    border-radius: 10000000px; 
+    font-size: 1rem; 
     font-weight: bold;
   }
   
@@ -27,7 +27,7 @@
     background-color: #f3e5f5; 
     border: 1px solid #9c27b0; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: 3rem;
     z-index: 50;
     width: 20rem; 
     max-height: 25rem; 
