@@ -22,7 +22,7 @@ const Product = ({ id, image, title, description, price, rating, onClick }) => {
         </div>
       </div>
       <div className={styles.div_btnComprar}>
-        <button onClick={handleClick} className={styles.btnComprar}>Comprar</button>
+        <button onClick={handleClick} className={styles.btnComprar}>Buy</button>
       </div>
     </div>
   );

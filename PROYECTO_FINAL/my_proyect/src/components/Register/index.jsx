@@ -99,7 +99,7 @@ const RegisterForm = () => {
       <br />
       {error && <p className={styles.sign_in - error}>{error}</p>}
       <button type="submit" className={styles.sign_inButton}>
-        SIGN IN
+        SIGN UP
       </button>
     </form>
   );

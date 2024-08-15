@@ -14,21 +14,19 @@ const Cart = () => {
       ) : (
         <div>
           {cart.map((product, idx) => (
-            <div
-              key={idx}
-              className={styles.productContainer}
-            >
+            <div key={idx} className={styles.productTarget}>
               <h3>{product.name}</h3>
+              <img src={product.image} alt={product.title} />
               <p>{product.description}</p>
               <p>{product.price}</p>
-              <p>Cantidad: {product.quantity}</p>
+              <p>Quantity: {product.quantity}</p>
               <button onClick={() => removeFromCart(product)} className={styles.removeButton}>
-                Eliminar del carrito
+               Delete from cart
               </button>
             </div>
           ))}
           <button onClick={() => clearCart()} className={styles.clearButton}>
-            Vaciar carrito
+            Clear cart
           </button>
         </div>
       )}

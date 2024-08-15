@@ -1,0 +1,50 @@
+.loginContainer {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #F3E8FF; 
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup {
+    margin-bottom: 15px;
+}
+
+.inputGroup label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6A0DAD; 
+}
+
+.inputGroup input {
+    padding: 10px;
+    border: 1px solid #C4A3E4; 
+    border-radius: 4px;
+    width: 100%;
+}
+
+.loginButton {
+    padding: 10px;
+    background-color: #9B59B6; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.googleButton {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #A569BD;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
