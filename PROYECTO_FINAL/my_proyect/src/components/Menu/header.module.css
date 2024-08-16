@@ -28,10 +28,11 @@ body {
   justify-content: right;
 }
 
-.header nav {
+.nav {
   display: flex;
   align-items: center;
   flex-wrap: wrap !important;
+  cursor: pointer;
 }
 
 .logo {

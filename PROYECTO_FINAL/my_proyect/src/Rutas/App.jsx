@@ -6,11 +6,6 @@ import Header from "../components/Menu/Header";
 import RegisterForm from "../components/Register";
 
 export default function App() {
-  const [openRegister, setOpenRegister] = useState(false);
-
-  const mostrarRegister = () => {
-    setOpenRegister(!openRegister);
-  };
 
   const { data: electronics } = useFetch(
     "https://fakestoreapi.com/products/category/electronics"
@@ -30,8 +25,8 @@ export default function App() {
 
   return (
     <main>
-      <Header mostrarRegister={mostrarRegister} />
-      {openRegister && <RegisterForm />}
+      <Header />
+      {/* {openRegister && <RegisterForm />} */}
       <main className="main">
         <h1 className="title">STYLES AND FASHION NICOL</h1>
 

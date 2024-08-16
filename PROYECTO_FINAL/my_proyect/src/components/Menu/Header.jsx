@@ -3,9 +3,9 @@ import img from "../../assets/logo.png";
 import { Link } from "react-scroll";
 import CartIcon from "../CartIcon/CartIcon";
 import Login from "../Login/Login";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-function Header({ mostrarRegister }) {
+function Header({ mostrarRegister}) {
   const [showLogin, setShowLogin] = useState(false);
 
   const mostrarLogin = () => {
@@ -25,23 +25,27 @@ function Header({ mostrarRegister }) {
             ELECTRONICS
           </Link>
           <Link to="jewelery" smooth={true} duration={500}>
-           JEWELERY
+            JEWELERY
           </Link>
           <Link to="mensclothing" smooth={true} duration={500}>
-          MENSCLOTHING
+            MENSCLOTHING
           </Link>
           <Link to="womensclothing" smooth={true} duration={500}>
-           WOMENSCLOTHING
+            WOMENSCLOTHING
           </Link>
         </nav>
       </div>
       <div>
-        <button onClick={mostrarRegister} className={styles.btnRegister}>
-          SIGN UP
-        </button>
+        <a href="/register">
+          <button onClick={mostrarRegister} className={styles.btnRegister}>
+            SIGN UP
+          </button>
+        </a>
+        <a href="/login">
         <button onClick={mostrarLogin} className={styles.btnLogin}>
           SIGN IN
         </button>
+        </a>
       </div>
 
       <div className="text-4xl p-4 my-2 mx-20">
