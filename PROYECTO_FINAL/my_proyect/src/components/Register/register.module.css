@@ -6,6 +6,12 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.sign_inForm:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 .sign_inLabel {
@@ -21,6 +27,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sign_inInput:focus {
@@ -41,8 +48,15 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .sign_inButton:hover {
   background-color: #7a6bc9; /* Morado claro oscuro */
+  transform: translateY(-2px);
+}
+
+.sign_inButton:active {
+  background-color: #6c5ce7; /* Morado claro */
+  transform: translateY(1px);
 }

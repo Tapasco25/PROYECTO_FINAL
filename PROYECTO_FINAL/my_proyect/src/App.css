@@ -5,7 +5,30 @@
   height: auto;
 }
 
-.title,
-.subtitle {
-  margin: 10px 0px;
+
+.title {
+  font-size: 36px;
+  font-weight: 900; 
+  color: #000000; 
+  margin: 20px 0;
+  text-align: center;
+  font-family: 'Bangers', cursive; 
+  letter-spacing: 3px; 
+  text-transform: uppercase; 
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); 
 }
+
+/* Estilo para el subtítulo */
+.subtitle {
+  font-size: 28px;
+  font-weight: 400; /* Peso normal para contraste */
+  color: #000000; /* Lila vibrante */
+  margin: 12px 0;
+  text-align: center;
+  font-family: 'Russo One', sans-serif; /* Fuente con un estilo robusto y moderno */
+  letter-spacing: 2px; /* Espaciado entre letras para claridad */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61); /* Sombra sutil para profundidad */
+}
+
+
+

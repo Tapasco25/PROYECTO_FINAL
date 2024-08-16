@@ -1,50 +1,89 @@
 .loginContainer {
     max-width: 400px;
     margin: auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    background-color: #F3E8FF; 
-}
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: #F3E8FF;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .loginContainer:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+  }
+  
 
-.loginForm {
+  .loginForm {
     display: flex;
     flex-direction: column;
-}
+  }
+  
+ 
+  .inputGroup {
+    margin-bottom: 20px;
+  }
+  
 
-.inputGroup {
-    margin-bottom: 15px;
-}
-
-.inputGroup label {
-    margin-bottom: 5px;
+  .inputGroup label {
+    margin-bottom: 8px;
     font-weight: bold;
     color: #6A0DAD; 
-}
-
-.inputGroup input {
-    padding: 10px;
+    font-size: 16px;
+  }
+  
+ 
+  .inputGroup input {
+    padding: 12px;
     border: 1px solid #C4A3E4; 
-    border-radius: 4px;
+    border-radius: 8px;
     width: 100%;
-}
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  
+  .inputGroup input:focus {
+    border-color: #9B59B6; 
+    box-shadow: 0 0 8px rgba(155, 89, 182, 0.3);
+    outline: none;
+  }
+  
 
-.loginButton {
-    padding: 10px;
-    background-color: #9B59B6; 
+  .loginButton {
+    padding: 12px;
+    background-color: #9B59B6;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-}
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  
+  .loginButton:hover {
+    background-color: #8e44ad; 
+    transform: translateY(-2px);
+  }
+  
 
-.googleButton {
+  .googleButton {
     margin-top: 10px;
-    padding: 10px;
-    background-color: #A569BD;
+    padding: 12px;
+    background-color: #A569BD; 
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     width: 100%;
-}
+  }
+  
+  
+  .googleButton:hover {
+    background-color: #9b59b6; 
+    transform: translateY(-2px);
+  }
+  

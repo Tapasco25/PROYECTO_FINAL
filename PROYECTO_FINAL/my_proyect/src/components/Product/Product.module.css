@@ -143,13 +143,7 @@ h1 {
   border-radius: 8px;
 }
 
-.title {
-  font-size: 2rem;
-  color: #4a148c; 
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: bold;
-}
+
 
 .productContainer {
   border: 2px solid #9575cd; 
