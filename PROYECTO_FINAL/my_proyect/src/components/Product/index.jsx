@@ -3,11 +3,11 @@ import {CartContext} from "../Context/CartContext"
 import styles from './Product.module.css';
 
 
-const Product = ({ id, image, title, description, price, rating, onClick }) => {
+const Product = ({ id, image, title, description, price, rating}) => {
   const { addToCart } = useContext(CartContext);
 
   const handleClick = () => {
-    const product = { image, title, description, price, rating, id: title }; // Aquí asumimos que el título es único para simplificar
+    const product = { image, title, description, price, rating, id: title }; 
     addToCart(product);
   };
   return (

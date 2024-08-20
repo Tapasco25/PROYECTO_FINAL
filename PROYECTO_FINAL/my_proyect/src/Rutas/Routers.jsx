@@ -16,7 +16,6 @@ export default function Routers() {
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
-      //{" "}
     </CartProvider>
   );
 }

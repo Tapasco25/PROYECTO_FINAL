@@ -1,10 +1,10 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import styles from "./Cart.module.css";
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useContext(CartContext);
+  console.log(cart);
 
   return (
     <div className={styles.cartContainer}>
@@ -13,12 +13,11 @@ const Cart = () => {
         <p className={styles.emptyMessage}>PRODUCT BASKET</p>
       ) : (
         <div>
-          {cart.map((product, idx) => (
-            <div key={idx} className={styles.productTarget}>
+          {cart.map((product) => (
+            <div key={product.id} className={styles.productTarget}>
               <h3>{product.name}</h3>
               <h3>{product.title}</h3>
               <img src={product.image} alt={product.name} />
-              {/* <p>{product.description}</p> */}
               <p>{product.price}</p>
               <p>Quantity: {product.quantity}</p>
               <button onClick={() => removeFromCart(product)} className={styles.removeButton}>

@@ -10,7 +10,7 @@ const CartIcon = () => {
 
   // Contar la cantidad total de productos en el carrito
   const totalItems = cart?.reduce((total, item) => total + item.quantity, 0);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const pagCart = () =>{
     navigate('Cart')
   }
