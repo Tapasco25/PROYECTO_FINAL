@@ -13,7 +13,7 @@ function Login() {
 
   const handleGoogleLogin = () => {
     // Redirigir a la página de inicio de sesión de Google
-    window.location.href = 'https://accounts.google.com/signin/v2/identifier';
+    window.location.href = 'https://google.com';
   };
 
   return (
