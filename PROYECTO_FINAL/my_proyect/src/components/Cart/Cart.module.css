@@ -1,11 +1,11 @@
 .cartContainer {
     padding: 20px;
-    background-color: #2c2c2c; /* Negro */
-    border-radius: 50px 0 50px 0; /* Bordes curvos y únicos */
-    box-shadow: 0 8px 20px rgba(122, 72, 221, 0.3); /* Sombra lila */
+    background-color: #2c2c2c; 
+    border-radius: 50px 0 50px 0; 
+    box-shadow: 0 8px 20px rgba(122, 72, 221, 0.3); 
     max-width: 650px;
     margin: auto;
-    font-family: 'Poppins', sans-serif; /* Tipografía llamativa */
+    font-family: 'Poppins', sans-serif; 
     position: relative;
     overflow: hidden;
   }
@@ -17,14 +17,14 @@
     right: -60px;
     width: 200px;
     height: 200px;
-    background-color: #ab47bc; /* Lila medio */
+    background-color: #ab47bc; 
     border-radius: 50%;
     opacity: 0.2;
   }
   
   .title {
     font-size: 2em;
-    color: #d1c4e9; /* Lila claro */
+    color: #d1c4e9; 
     text-align: center;
     margin-bottom: 30px;
     text-transform: uppercase;
@@ -33,7 +33,7 @@
   
   .emptyMessage {
     font-size: 1.5em;
-    color: #b39ddb; /* Lila medio */
+    color: #b39ddb; 
     text-align: center;
     margin-top: 20px;
     font-style: italic;
@@ -43,35 +43,35 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(145deg, #4a148c, #2c2c2c); /* Degradado de lila a negro */
-    border-radius: 20px 0 20px 0; /* Formas más orgánicas */
+    background: linear-gradient(145deg, #4a148c, #2c2c2c); 
+    border-radius: 20px 0 20px 0; 
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(122, 72, 221, 0.3); /* Sombra suave */
+    box-shadow: 0 5px 15px rgba(122, 72, 221, 0.3);
   }
   
   .productTarget img {
     max-width: 120px;
     border-radius: 20px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 10px rgba(122, 72, 221, 0.3); /* Sombra en la imagen */
+    box-shadow: 0 2px 10px rgba(122, 72, 221, 0.3); 
   }
   
   .productTarget h3 {
-    color: #d1c4e9; /* Lila claro */
+    color: #d1c4e9; 
     margin: 5px 0;
     text-transform: uppercase;
     font-weight: 600;
   }
   
   .productTarget p {
-    color: #b39ddb; /* Lila medio */
+    color: #b39ddb; 
     margin: 5px 0;
     font-size: 1em;
   }
   
   .removeButton {
-    background-color: #8e24aa; /* Lila fuerte */
+    background-color: #8e24aa; 
     color: white;
     border: none;
     border-radius: 20px;
@@ -83,12 +83,11 @@
   }
   
   .removeButton:hover {
-    background-color: #7b1fa2; /* Lila oscuro */
-    transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+    background-color: #7b1fa2; 
+    transform: scale(1.05); 
   }
-  
   .clearButton {
-    background-color: #ab47bc; /* Lila medio */
+    background-color: #ab47bc; 
     color: white;
     border: none;
     border-radius: 25px;
@@ -101,7 +100,7 @@
   }
   
   .clearButton:hover {
-    background-color: #9c27b0; /* Lila fuerte */
-    transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+    background-color: #9c27b0; 
+    transform: scale(1.05); 
   }
   
