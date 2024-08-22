@@ -1,26 +1,25 @@
 html, body {
-  font-family: 'Poppins', sans-serif; /* Fuente moderna y elegante */
+  font-family: 'Poppins', sans-serif; 
   margin: 0;
   padding: 0;
-  background-color: #f9f4ff; /* Fondo lila claro */
+  background-color: #f9f4ff; 
 }
 
-/* Estilo del header */
 .header {
-  position: sticky; /* Fija el header en la parte superior de la página */
+  position: sticky; 
   top: 0;
   width: 100%;
-  background: linear-gradient(135deg, #8e2de2, #6a1b9a); /* Gradiente púrpura */
+  background: linear-gradient(135deg, #8e2de2, #6a1b9a); 
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px; /* Espaciado generoso dentro del header */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra profunda para un efecto 3D */
+  padding: 15px 30px; 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
   z-index: 1000;
 }
 
-/* Logo */
+
 .logo {
   width: 90px;
   height: 90px;
@@ -30,11 +29,11 @@ html, body {
 }
 
 .logo:hover {
-  transform: scale(1.1); /* Aumento al pasar el ratón */
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* Sombra luminosa para un efecto de resplandor */
+  transform: scale(1.1); 
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); 
 }
 
-/* Estilo de navegación */
+
 .nav {
   display: flex;
   align-items: center;
@@ -50,16 +49,16 @@ html, body {
 }
 
 .nav a:hover {
-  color: #d1c4e9; /* Lila claro para el hover */
-  transform: translateY(-3px); /* Efecto de elevación */
+  color: #d1c4e9; 
+  transform: translateY(-3px); 
 }
 
-/* Botones */
+
 .header button {
-  background-color: #fff; /* Botón blanco para destacar */
-  color: #6a1b9a; /* Lila oscuro */
-  border: 2px solid #6a1b9a; /* Borde lila oscuro */
-  border-radius: 25px; /* Bordes redondeados */
+  background-color: #fff; 
+  color: #6a1b9a; 
+  border: 2px solid #6a1b9a; 
+  border-radius: 25px; 
   cursor: pointer;
   padding: 10px 20px;
   font-weight: bold;
@@ -67,12 +66,12 @@ html, body {
 }
 
 .header button:hover {
-  background-color: #6a1b9a; /* Fondo lila oscuro en el hover */
-  color: #fff; /* Texto blanco en el hover */
-  transform: scale(1.05); /* Efecto de aumento en el hover */
+  background-color: #6a1b9a; 
+  color: #fff; 
+  transform: scale(1.05); 
 }
 
-/* Menú de barra lateral en móviles */
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -93,7 +92,7 @@ html, body {
   .barra {
     height: 100%;
     width: 100%;
-    background: #6a1b9a; /* Fondo lila oscuro */
+    background: #6a1b9a; 
     position: fixed;
     top: 0;
     left: -100%;
