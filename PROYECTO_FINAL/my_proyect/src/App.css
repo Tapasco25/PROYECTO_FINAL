@@ -75,7 +75,7 @@
 .homepageTitle {
   font-size: 4.5rem;
   color: #ffffff;
-  font-family: 'Lobster', cursive;  /* Nueva fuente cursiva más llamativa */
+  font-family: 'Lobster', cursive;  
   text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
   letter-spacing: 2px;
   transition: text-shadow 0.3s ease-in-out;
@@ -93,4 +93,61 @@
   .homepageLogo {
     max-width: 140px;
   }
+}
+
+.homepageButtons {
+  margin-top: 1rem;
+}
+
+.homepageBtnRegister,
+.homepageBtnLogin {
+  background-color: #9b59b6; 
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 8px 4px;
+  cursor: pointer;
+  border-radius: 8px; 
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+.homepageBtnRegister:hover,
+.homepageBtnLogin:hover {
+  background-color: #8e44ad; 
+  transform: scale(1.05); 
+}
+
+.homepageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepageModalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.homepageCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }

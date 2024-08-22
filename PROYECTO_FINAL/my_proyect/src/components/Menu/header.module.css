@@ -54,22 +54,7 @@ html, body {
 }
 
 
-.header button {
-  background-color: #fff; 
-  color: #6a1b9a; 
-  border: 2px solid #6a1b9a; 
-  border-radius: 25px; 
-  cursor: pointer;
-  padding: 10px 20px;
-  font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
 
-.header button:hover {
-  background-color: #6a1b9a; 
-  color: #fff; 
-  transform: scale(1.05); 
-}
 
 
 @media (max-width: 768px) {

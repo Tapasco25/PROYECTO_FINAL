@@ -2,20 +2,9 @@ import styles from "./header.module.css";
 import img from "../../assets/logo.png";
 import { Link } from "react-scroll";
 import CartIcon from "../CartIcon/CartIcon";
-import Login from "../Login/Login";
-import React, { useState } from "react";
+import React from "react";
 
-function Header({ mostrarRegister}) {
-  const [showLogin, setShowLogin] = useState(false);
-
-  const mostrarLogin = () => {
-    setShowLogin(true);
-  };
-
-  const cerrarLogin = () => {
-    setShowLogin(false);
-  };
-
+function Header() {
   return (
     <header className={styles.header}>
       <img className={styles.logo} src={img} alt="Logo" />
@@ -35,38 +24,12 @@ function Header({ mostrarRegister}) {
           </Link>
         </nav>
       </div>
-      <div>
-        <a href="/register">
-          <button onClick={mostrarRegister} className={styles.btnRegister}>
-            SIGN UP
-          </button>
-        </a>
-        <a href="/login">
-        <button onClick={mostrarLogin} className={styles.btnLogin}>
-          SIGN IN
-        </button>
-        </a>
-      </div>
-
       <div className="text-4xl p-4 my-2 mx-20">
         <CartIcon />
       </div>
-
       <button className={styles.classMenuBtn} id="menu-btn">
         &#9776;
       </button>
-      <div>
-        {showLogin && (
-          <div className={styles.modal}>
-            <div className={styles.modalContent}>
-              <button onClick={cerrarLogin} className={styles.closeButton}>
-                &times;
-              </button>
-              <Login />
-            </div>
-          </div>
-        )}
-      </div>
     </header>
   );
 }
