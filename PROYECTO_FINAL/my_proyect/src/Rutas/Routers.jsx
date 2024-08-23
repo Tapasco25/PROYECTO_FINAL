@@ -13,7 +13,7 @@ export default function Routers() {
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/App" element={<App />} />
-          <Route path="/Cart" element={<Cart />} />
+          <Route path="/app/Cart" element={<Cart />} />
           <Route path="/register" element={<RegistePage />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>

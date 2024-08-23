@@ -1,53 +1,123 @@
-import React, { useState } from 'react';
-import styles from './login.module.css';
+import React, { useEffect, useState } from "react";
+import styles from "./login.module.css";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth } from "../../fireBase/Credenciales";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState(null);
+  const [registrar, setRegistrar] = useState(false);
 
-  const handleLogin = (e) => {
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log(currentUser ? "Usuario encontrado" : "Usuario no encontrado");
+    });
+
+    return () => unsubscribe(); // Limpia el efecto para evitar fugas de memoria
+  }, []);
+
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Aquí iría la lógica para manejar el inicio de sesión con email y password
-    console.log('Iniciando sesión con', email, password);
+    console.log("Creando usuario...");
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const newUser = userCredential.user;
+
+      // Enviar datos del nuevo usuario al backend
+      await fetch("http://localhost:3000/usuarios", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          uid_usuario: newUser.uid,
+          correo_electronico: newUser.email,
+        }),
+      });
+
+      console.log("Usuario creado con éxito");
+    } catch (error) {
+      console.error("Error al crear la cuenta", error);
+    }
   };
 
-  const handleGoogleLogin = () => {
-    // Redirigir a la página de inicio de sesión de Google
-    window.location.href = 'https://google.com';
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log("Iniciando sesión...");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("Has iniciado sesión");
+    } catch (error) {
+      console.error("Error al iniciar sesión", error);
+    }
+  };
+
+  const submitHandler = (e) => {
+    registrar ? handleRegister(e) : handleLogin(e);
+  };
+
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      console.log("Has iniciado sesión con Google");
+    } catch (error) {
+      console.error("Error al iniciar sesión con Google", error);
+    }
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <form onSubmit={handleLogin} className={styles.loginForm}>
-        <h2>SIGN IN</h2>
-        <div className={styles.inputGroup}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <>
+      {!user && (
+        <div className={styles.loginContainer}>
+          <form onSubmit={submitHandler} className={styles.loginForm}>
+            <h2>{registrar ? "SIGN UP" : "SIGN IN"}</h2>
+            <div className={styles.inputGroup}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className={styles.loginButton}>
+              {registrar ? "SIGN UP" : "SIGN IN"}
+            </button>
+          </form>
+          <button
+            onClick={() => setRegistrar(!registrar)}
+            className={styles.buttonIniciar}
+          >
+            {registrar ? "¿DO YOU WANT TO START?" : "¿DO YOU WANT TO REGISTER?"}
+          </button>
+          <button onClick={handleGoogleLogin} className={styles.googleButton}>
+            SIGN IN WITH GOOGLE
+          </button>
         </div>
-        <div className={styles.inputGroup}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className={styles.loginButton}>
-          SIGN IN
-        </button>
-      </form>
-      <button onClick={handleGoogleLogin} className={styles.googleButton}>
-        SIGN IN WITH GOOGLE
-      </button>
-    </div>
+      )}
+    </>
   );
 }
 

@@ -3,6 +3,8 @@ import "../../../src/App.css";
 import img from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import Login from "../Login/Login"; // Asegúrate de que la ruta sea correcta
+import { auth } from "../../fireBase/Credenciales";
+import { signOut } from "firebase/auth";
 
 export default function HomePage() {
   const [showLogin, setShowLogin] = useState(false);
@@ -11,8 +13,13 @@ export default function HomePage() {
     setShowLogin(true);
   };
 
-  const cerrarLogin = () => {
-    setShowLogin(false);
+  const cerrarLogin = async () => {
+    try {
+      await signOut(auth);
+      console.log("Se cerro la sesion")
+    } catch (error) {
+      console.log("No se cerro la sesion")
+    }
   };
 
   return (
@@ -35,9 +42,8 @@ export default function HomePage() {
       {showLogin && (
         <div className="homepageModal">
           <div className="homepageModalContent">
-            <button onClick={cerrarLogin} className="homepageCloseButton">
-              &times;
-            </button>
+            <button onClick={cerrarLogin} className="homepageCloseButton">lOG OUT</button>
+           
             <Login />
           </div>
         </div>
