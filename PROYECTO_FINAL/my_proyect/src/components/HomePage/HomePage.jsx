@@ -13,14 +13,8 @@ export default function HomePage() {
     setShowLogin(true);
   };
 
-  const cerrarLogin = async () => {
-    try {
-      await signOut(auth);
-      console.log("Se cerro la sesion")
-    } catch (error) {
-      console.log("No se cerro la sesion")
-    }
-  };
+ 
+  
 
   return (
     <div className="homepage">
@@ -28,11 +22,11 @@ export default function HomePage() {
         <img src={img} alt="Logo" className="homepageLogo" />
         <h1 className="homepageTitle">STYLES AND FASHION NICOL</h1>
         <div className="homepageButtons">
-          <Link to="/register">
+          {/* <Link to="/register">
             <button className="homepageBtnRegister">
               SIGN UP
             </button>
-          </Link>
+          </Link> */}
           <button onClick={mostrarLogin} className="homepageBtnLogin">
             SIGN IN
           </button>
@@ -42,8 +36,6 @@ export default function HomePage() {
       {showLogin && (
         <div className="homepageModal">
           <div className="homepageModalContent">
-            <button onClick={cerrarLogin} className="homepageCloseButton">lOG OUT</button>
-           
             <Login />
           </div>
         </div>

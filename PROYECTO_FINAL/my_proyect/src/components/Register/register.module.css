@@ -1,62 +1,65 @@
 .sign_inForm {
-  max-width: 300px;
-  margin: 40px auto;
-  padding: 20px;
+  max-width: 200px;    
+  margin: 20px auto;  
+  padding: 10px; 
   background-color: #f7f7f7;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;  
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);  
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .sign_inForm:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  transform: translateY(-5px);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-4px); 
 }
 
 .sign_inLabel {
   display: block;
-  margin-bottom: 10px;
-  color: #6c5ce7; /* Morado claro */
+  margin-bottom: 8px;  
+  color: #6c5ce7;
+  font-size: 12px;  
 }
 
 .sign_inInput {
   width: 90%;
-  height: 40px;
-  margin-bottom: 20px;
-  padding: 10px;
+  height: 25px;  
+  margin-bottom: 10px;  
+  padding: 6px;  
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;   
+  font-size: 12px;  
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sign_inInput:focus {
-  border-color: #6c5ce7; /* Morado claro */
-  box-shadow: 0 0 5px rgba(108, 92, 231, 0.5);
+  border-color: #6c5ce7;
+  box-shadow: 0 0 4px rgba(108, 92, 231, 0.5);  
 }
 
 .sign_inError {
-  color: #ff69b4; /* Lila */
-  margin-bottom: 20px;
+  color: #ff69b4;
+  margin-bottom: 15px; 
+  font-size: 12px; 
 }
 
 .sign_inButton {
-  width: 100%;
-  height: 40px;
-  background-color: #6c5ce7; /* Morado claro */
+  height: 30px; 
+  font-size: 12px; 
+  background-color: #6c5ce7;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px; 
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .sign_inButton:hover {
-  background-color: #7a6bc9; /* Morado claro oscuro */
+  background-color: #7a6bc9; 
   transform: translateY(-2px);
 }
 
 .sign_inButton:active {
-  background-color: #6c5ce7; /* Morado claro */
+  background-color: #6c5ce7;
   transform: translateY(1px);
 }

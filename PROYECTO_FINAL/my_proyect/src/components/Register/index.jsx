@@ -1,47 +1,68 @@
 import React, { useState } from "react";
 import styles from "./register.module.css";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../fireBase/Credenciales";
+// import { auth } from "../firebase"; // Asegúrate de importar tu configuración de Firebase
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setError("Las contraseñas no coinciden");
+    // Validaciones
+    if (!name || !email || !password || !confirmPassword) {
+      setError("Todos los campos son obligatorios.");
       return;
     }
 
-    fetch("(link unavailable)", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        surname,
+    if (password !== confirmPassword) {
+      setError("Las contraseñas no coinciden.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
         email,
-        password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.error) {
-          setError(data.error);
-        } else {
-          window.location.href = "/";
-        }
-      })
-      .catch((error) => console.error(error));
+        password
+      );
+      const newUser = userCredential.user;
+
+      // Enviar datos del nuevo usuario al backend
+      await fetch("http://localhost:3000/usuarios", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          uid_usuario: newUser.uid,
+          correo_electronico: newUser.email,
+          nombre_completo: name,
+        }),
+      });
+
+      console.log("Usuario creado con éxito");
+      navigate("/app");
+    } catch (error) {
+      console.error("Error al crear la cuenta", error);
+      setError(
+        "Hubo un problema al crear la cuenta. Por favor, intente de nuevo."
+      );
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.sign_inForm}>
+    <form onSubmit={handleRegister} className={styles.sign_inForm}>
       <label htmlFor="name" className={styles.sign_inLabel}>
         Nombre:
       </label>
@@ -51,17 +72,7 @@ const RegisterForm = () => {
         value={name}
         onChange={(event) => setName(event.target.value)}
         className={styles.sign_inInput}
-      />
-      <br />
-      <label htmlFor="surname" className={styles.sign_inLabel}>
-        Apellido:
-      </label>
-      <input
-        type="text"
-        id="surname"
-        value={surname}
-        onChange={(event) => setSurname(event.target.value)}
-        className={styles.sign_inInput}
+        required
       />
       <br />
       <label htmlFor="email" className={styles.sign_inLabel}>
@@ -73,6 +84,7 @@ const RegisterForm = () => {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         className={styles.sign_inInput}
+        required
       />
       <br />
       <label htmlFor="password" className={styles.sign_inLabel}>
@@ -84,6 +96,7 @@ const RegisterForm = () => {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
         className={styles.sign_inInput}
+        required
       />
       <br />
       <label htmlFor="confirm-password" className={styles.sign_inLabel}>
@@ -95,9 +108,10 @@ const RegisterForm = () => {
         value={confirmPassword}
         onChange={(event) => setConfirmPassword(event.target.value)}
         className={styles.sign_inInput}
+        required
       />
       <br />
-      {error && <p className={styles.sign_in - error}>{error}</p>}
+      {error && <p className={styles.sign_inError}>{error}</p>}
       <button type="submit" className={styles.sign_inButton}>
         SIGN UP
       </button>

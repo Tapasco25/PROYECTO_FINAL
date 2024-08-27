@@ -46,7 +46,7 @@
 .homepageHeader {
   text-align: center;
   padding: 30px;
-  border-radius: 25px;
+  border-radius: 15px; 
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
@@ -59,8 +59,8 @@
 }
 
 .homepageLogo {
-  max-width: 180px;
-  margin-bottom: 25px;
+  max-width: 160px; 
+  margin-bottom: 20px;
   border-radius: 50%;
   border: 4px solid white;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
@@ -73,9 +73,9 @@
 }
 
 .homepageTitle {
-  font-size: 4.5rem;
+  font-size: 4rem; 
   color: #ffffff;
-  font-family: 'Lobster', cursive;  
+  font-family: 'Lobster', cursive;
   text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
   letter-spacing: 2px;
   transition: text-shadow 0.3s ease-in-out;
@@ -97,28 +97,31 @@
 
 .homepageButtons {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
 }
 
 .homepageBtnRegister,
 .homepageBtnLogin {
-  background-color: #9b59b6; 
+  background-color: #9b59b6;
   color: white;
   border: none;
   padding: 12px 24px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 18px;
-  margin: 8px 4px;
+  font-size: 16px; 
+  margin: 8px 0; 
   cursor: pointer;
-  border-radius: 8px; 
-  transition: background-color 0.3s, transform 0.2s; 
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .homepageBtnRegister:hover,
 .homepageBtnLogin:hover {
-  background-color: #8e44ad; 
-  transform: scale(1.05); 
+  background-color: #8e44ad;
+  transform: scale(1.05);
 }
 
 .homepageModal {
@@ -134,35 +137,14 @@
 }
 
 .homepageModalContent {
-  background: white;
+  background: #F3E8FF;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 90%;
-  max-width: 400px;
+  max-width: 400px; 
   position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow-y: auto; 
 }
 
-.homepageCloseButton {
-  background-color: #b39ddb; 
-  color: #ffffff;
-  border: none;
-  border-radius: 25px;
-  padding: 12px 24px;
-  font-size: 18px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-.homepageCloseButton:hover {
-  background-color: #9575cd; 
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(-5px);
-}
-
-.homepageCloseButton:active {
-  transform: translateY(2px);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
-}
