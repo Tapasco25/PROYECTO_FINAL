@@ -16,7 +16,6 @@ const RegisterForm = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Validaciones
     if (!name || !email || !password || !confirmPassword) {
       setError("Todos los campos son obligatorios.");
       return;
@@ -50,7 +49,18 @@ const RegisterForm = () => {
           nombre_completo: name,
         }),
       });
-
+      try {
+        await fetch("http://localhost:3000/carrito", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id_usuario: newUser.uid,
+            id_producto: [],
+          }),
+        });
+      } catch (error) {
+        console.error("Error al crear el carrito", error);
+      }
       console.log("Usuario creado con éxito");
       navigate("/app");
     } catch (error) {

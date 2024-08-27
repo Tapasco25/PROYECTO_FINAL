@@ -1,6 +1,6 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
 .main {
   width: auto;
@@ -9,26 +9,25 @@
 
 .title {
   font-size: 36px;
-  font-weight: 900; 
-  color: #000000; 
+  font-weight: 900;
+  color: #000000;
   margin: 20px 0;
   text-align: center;
-  font-family: 'Bangers', cursive; 
-  letter-spacing: 3px; 
-  text-transform: uppercase; 
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); 
+  font-family: "Bangers", cursive;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
 }
-
 
 .subtitle {
   font-size: 28px;
-  font-weight: 400; 
-  color: #000000; 
+  font-weight: 400;
+  color: #000000;
   margin: 12px 0;
   text-align: center;
-  font-family: 'Russo One', sans-serif; 
-  letter-spacing: 2px; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61); 
+  font-family: "Russo One", sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61);
 }
 
 .homepage {
@@ -46,7 +45,7 @@
 .homepageHeader {
   text-align: center;
   padding: 30px;
-  border-radius: 15px; 
+  border-radius: 15px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
@@ -59,7 +58,7 @@
 }
 
 .homepageLogo {
-  max-width: 160px; 
+  max-width: 160px;
   margin-bottom: 20px;
   border-radius: 50%;
   border: 4px solid white;
@@ -73,9 +72,9 @@
 }
 
 .homepageTitle {
-  font-size: 4rem; 
+  font-size: 4rem;
   color: #ffffff;
-  font-family: 'Lobster', cursive;
+  font-family: "Lobster", cursive;
   text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
   letter-spacing: 2px;
   transition: text-shadow 0.3s ease-in-out;
@@ -99,7 +98,7 @@
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
 .homepageBtnRegister,
@@ -111,8 +110,8 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px; 
-  margin: 8px 0; 
+  font-size: 16px;
+  margin: 8px 0;
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s, transform 0.2s;
@@ -137,14 +136,13 @@
 }
 
 .homepageModalContent {
-  background: #F3E8FF;
+  background: #f3e8ff;
   padding: 20px;
   border-radius: 12px;
-  width: 90%;
-  max-width: 400px; 
+  width: 900px;
+  max-width: 500px;
   position: relative;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
-

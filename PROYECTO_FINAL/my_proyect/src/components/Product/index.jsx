@@ -7,7 +7,7 @@ const Product = ({ id, image, title, description, price, rating}) => {
   const { addToCart } = useContext(CartContext);
 
   const handleClick = () => {
-    const product = { image, title, description, price, rating, id: title }; 
+    const product = { image, title, description, price, rating, id }; 
     addToCart(product);
   };
   return (

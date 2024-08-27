@@ -65,50 +65,49 @@ function Login() {
 
   return (
     <div className={styles.loginContainer}>
-      {!user && (
-        <>
-          {registrar ? (
-            <RegisterForm />
-          ) : (
-            <form onSubmit={submitHandler} className={styles.loginForm}>
-              <h2>SIGN IN</h2>
-              <div className={styles.inputGroup}>
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className={styles.inputGroup}>
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              {error && <p className={styles.error}>{error}</p>}
-              <button type="submit" className={styles.loginButton}>
-                SIGN IN
-              </button>
-            </form>
-          )}
-          <button
-            onClick={() => setRegistrar(!registrar)}
-            className={styles.buttonIniciar}
-          >
-            {registrar ? "¿DO YOU WANT TO START?" : "¿DO YOU WANT TO REGISTER?"}
+      {/* {!user && ( */}
+
+      {registrar ? (
+        <RegisterForm />
+      ) : (
+        <form onSubmit={submitHandler} className={styles.loginForm}>
+          <h2>SIGN IN</h2>
+          <div className={styles.inputGroup}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className={styles.inputGroup}>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          {error && <p className={styles.error}>{error}</p>}
+          <button type="submit" className={styles.loginButton}>
+            SIGN IN
           </button>
-          <button onClick={handleGoogleLogin} className={styles.googleButton}>
-            SIGN IN WITH GOOGLE
-          </button>
-        </>
+        </form>
       )}
+      <button
+        onClick={() => setRegistrar(!registrar)}
+        className={styles.buttonIniciar}
+      >
+        {registrar ? "¿DO YOU WANT TO START?" : "¿DO YOU WANT TO REGISTER?"}
+      </button>
+      <button onClick={handleGoogleLogin} className={styles.googleButton}>
+        SIGN IN WITH GOOGLE
+      </button>
+      {/* )} */}
     </div>
   );
 }

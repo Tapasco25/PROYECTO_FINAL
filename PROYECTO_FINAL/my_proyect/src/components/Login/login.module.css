@@ -1,21 +1,24 @@
 .loginContainer {
-  max-width: 100%; 
+  max-width: 100%;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  background-color: #F3E8FF;
+  background-color: #f3e8ff;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   box-sizing: border-box;
 }
 
 .loginContainer:hover {
-
 }
 
 .loginForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.loginForm h2 {
+  color: #000;
 }
 
 .inputGroup {
@@ -26,13 +29,13 @@
 .inputGroup label {
   margin-bottom: 8px;
   font-weight: bold;
-  color: #6A0DAD;
+  color: #6a0dad;
   font-size: 16px;
 }
 
 .inputGroup input {
   padding: 12px;
-  border: 1px solid #C4A3E4;
+  border: 1px solid #c4a3e4;
   border-radius: 8px;
   width: 90%;
   font-size: 16px;
@@ -40,17 +43,16 @@
 }
 
 .inputGroup input:focus {
-  border-color: #9B59B6;
+  border-color: #9b59b6;
   box-shadow: 0 0 8px rgba(155, 89, 182, 0.3);
   outline: none;
 }
-
 
 .loginButton,
 .googleButton,
 .buttonIniciar {
   padding: 12px;
-  background-color: #9B59B6;
+  background-color: #9b59b6;
   color: white;
   border: none;
   border-radius: 8px;
@@ -68,22 +70,20 @@
   transform: translateY(-2px);
 }
 
-
 .googleButton {
-  background-color: #A569BD;
+  background-color: #a569bd;
 }
 
 .googleButton:hover {
   background-color: #9b59b6;
 }
 
-
 .registerContainer {
-  max-width: 100%; 
+  max-width: 100%;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  background-color: #F3E8FF;
+  background-color: #f3e8ff;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -99,13 +99,13 @@
 .registerContainer .inputGroup label {
   margin-bottom: 8px;
   font-weight: bold;
-  color: #6A0DAD;
+  color: #6a0dad;
   font-size: 16px;
 }
 
 .registerContainer .inputGroup input {
   padding: 12px;
-  border: 1px solid #C4A3E4;
+  border: 1px solid #c4a3e4;
   border-radius: 8px;
   width: 100%;
   font-size: 16px;
@@ -113,7 +113,7 @@
 }
 
 .registerContainer .inputGroup input:focus {
-  border-color: #9B59B6;
+  border-color: #9b59b6;
   box-shadow: 0 0 8px rgba(155, 89, 182, 0.3);
   outline: none;
 }
@@ -121,7 +121,7 @@
 .registerContainer .loginButton,
 .registerContainer button {
   padding: 12px;
-  background-color: #9B59B6;
+  background-color: #9b59b6;
   color: white;
   border: none;
   border-radius: 8px;

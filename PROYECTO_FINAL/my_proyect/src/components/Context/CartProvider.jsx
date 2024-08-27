@@ -1,45 +1,66 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartContext } from "./CartContext";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../fireBase/Credenciales";
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [usuario, setUsuario] = useState(null);
+  const [productosCarrito, setProductosCarrito] = useState([]);
 
-  const addToCart = (product) => {
-    setCart((prevState) => {
-      const existingProdut = prevState.find((item) => item.id === product.id);
-      if (existingProdut) {
-        return prevState.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      return [...prevState, { ...product, quantity: 1 }];
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUsuario(currentUser);
+      console.log(currentUser ? "Usuario encontrado" : "Usuario no encontrado");
     });
+
+    return () => unsubscribe(); // Limpia el efecto para evitar fugas de memoria
+  }, []);
+
+  useEffect(() => {
+    if (usuario) {
+      GetCarrito();
+    }
+  }, [usuario]);
+
+  const GetCarrito = () => {
+    if (usuario) {
+      fetch(`http://localhost:3000/carrito/id_usuario/${usuario.uid}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setCart(data);
+          setProductosCarrito(data.id_producto); // Actualiza los productos en el carrito
+        })
+        .catch((error) => console.error("Error al obtener el carrito:", error));
+    }
   };
 
-  const removeFromCart = (product) => {
-    setCart((prevState) => {
-      const updatedCart = prevState
-        .map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0); // Filtra los productos con cantidad 0
+  const addToCart = (product, cantidad = 1) => {
+    if (!usuario) {
+      console.error("Usuario no autenticado. No se puede agregar al carrito.");
+      return;
+    }
 
-      return updatedCart;
-    });
-  };
+    const updatedProducts = [
+      { cantidad, id_producto: product.id },
+      ...productosCarrito,
+    ];
 
-  const clearCart = () => {
-    setCart([]);
+    fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_producto: updatedProducts }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProductosCarrito(updatedProducts); // Actualiza los productos del carrito localmente
+        console.log("Producto añadido al carrito:", data);
+      })
+      .catch((error) => console.error("Error al agregar al carrito:", error));
   };
 
   return (
-    <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart }}
-    >
+    <CartContext.Provider value={{ cart: productosCarrito, addToCart }}>
       {children}
     </CartContext.Provider>
   );

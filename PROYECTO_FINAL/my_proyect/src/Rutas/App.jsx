@@ -8,8 +8,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../fireBase/Credenciales";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Slider from "../components/Silder/Slider";
+import ropa1 from "../assets/slider/ropa1.jpg";
+import ropa2 from "../assets/slider/ropa2.jpg";
+import ropa3 from "../assets/slider/ropa3.jpg";
 
 export default function App() {
+  const images = [ropa1, ropa2, ropa3];
   const [currentUser, setcurrentUser] = useState(null);
   const { data: electronics } = useFetch(
     "https://fakestoreapi.com/products/category/electronics"
@@ -34,14 +39,15 @@ export default function App() {
 
     return () => unsubscribe(); // Limpia el efecto para evitar fugas de memoria
   }, []);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <main>
       {currentUser ? (
         <>
           <Header />
           <main className="main">
-            <h1 className="title">STYLES AND FASHION NICOL</h1>
+            {/* <h1 className="title">STYLES AND FASHION NICOL</h1> */}
+            <Slider images={images} />
 
             <div className="category" name="electronics">
               <h1 className="subtitle">Electronics</h1>
@@ -85,7 +91,7 @@ export default function App() {
           </main>
         </>
       ) : (
-        navigate('/')
+        navigate("/")
       )}
     </main>
   );

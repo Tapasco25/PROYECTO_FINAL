@@ -13,9 +13,6 @@ export default function HomePage() {
     setShowLogin(true);
   };
 
- 
-  
-
   return (
     <div className="homepage">
       <header className="homepageHeader">
