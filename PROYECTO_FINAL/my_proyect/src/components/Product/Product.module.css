@@ -1,8 +1,7 @@
 h1 {
-  background-color: #ba68c8;
+  background-color: #f6f2f7a6;
   color: #000000;
   padding: 20px;
-  border: 2px solid #6a1b9a;
   z-index: 1;
   text-align: center;
   margin: 10px 0px;
@@ -27,7 +26,7 @@ h1 {
   background-color: #ffffff;
   flex-direction: column;
   width: 200px;
-  min-width: 200px;
+  min-width: 300px;
   height: 500px;
   margin: 8px;
   box-sizing: border-box;
@@ -139,23 +138,21 @@ h1 {
 
 .productListContainer {
   padding: 1.5rem;
-  background-color: #f3e5f5; 
+  background-color: #f3e5f5;
   border-radius: 8px;
 }
 
-
-
 .productContainer {
-  border: 2px solid #9575cd; 
-  background-color: #ede7f6; 
+  border: 2px solid #9575cd;
+  background-color: #ede7f6;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 6px;
-  transition: box-shadow 0.3s ease; 
+  transition: box-shadow 0.3s ease;
 }
 
 .productContainer:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .productContainer h2 {
@@ -180,7 +177,7 @@ h1 {
 }
 
 .addToCartButton:hover {
-  background-color: #5e35b1; 
+  background-color: #5e35b1;
 }
 
 @media (max-width: 568px) {
@@ -207,7 +204,6 @@ h1 {
 
 @media (max-width: 749px) {
   .contenido {
-    
   }
 
   .header .container {
