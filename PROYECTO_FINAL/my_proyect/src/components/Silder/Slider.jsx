@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Slider.css";
 
 const Slider = ({ images }) => {
@@ -13,6 +13,16 @@ const Slider = ({ images }) => {
     const index = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
     setCurrentIndex(index);
   };
+
+  // Change image automatically every 3 seconds
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      goToNext();
+    }, 3000); // 3000 milliseconds = 3 seconds
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [currentIndex, images.length]);
 
   return (
     <div className="slider">

@@ -9,12 +9,13 @@ import { auth } from "../fireBase/Credenciales";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "../components/Silder/Slider";
-import ropa1 from "../assets/slider/ropa1.jpg";
-import ropa2 from "../assets/slider/ropa2.jpg";
-import ropa3 from "../assets/slider/ropa3.jpg";
+import img1 from "../assets/slider/img1.jpg";
+import img2 from "../assets/slider/img2.jpg";
+import img3 from "../assets/slider/img3.jpg";
+import img4 from "../assets/slider/img4.jpg"
 
 export default function App() {
-  const images = [ropa1, ropa2, ropa3];
+  const images = [img1, img2, img3,img4];
   const [currentUser, setcurrentUser] = useState(null);
   const { data: electronics } = useFetch(
     "https://fakestoreapi.com/products/category/electronics"
