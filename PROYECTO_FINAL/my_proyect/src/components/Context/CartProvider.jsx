@@ -59,8 +59,50 @@ export const CartProvider = ({ children }) => {
       .catch((error) => console.error("Error al agregar al carrito:", error));
   };
 
+  const removeFromCart = (productId) => {
+    if (!usuario) {
+      console.error("Usuario no autenticado. No se puede eliminar del carrito.");
+      return;
+    }
+
+    const updatedProducts = productosCarrito.filter(
+      (producto) => producto.id_producto !== productId
+    );
+
+    fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_producto: updatedProducts }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProductosCarrito(updatedProducts); // Actualiza los productos del carrito localmente
+        console.log("Producto eliminado del carrito:", data);
+      })
+      .catch((error) => console.error("Error al eliminar del carrito:", error));
+  };
+
+  const clearCart = () => {
+    if (!usuario) {
+      console.error("Usuario no autenticado. No se puede vaciar el carrito.");
+      return;
+    }
+
+    fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_producto: [] }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProductosCarrito([]); // Vacía el carrito localmente
+        console.log("Carrito vaciado:", data);
+      })
+      .catch((error) => console.error("Error al vaciar el carrito:", error));
+  };
+
   return (
-    <CartContext.Provider value={{ cart: productosCarrito, addToCart }}>
+    <CartContext.Provider value={{ cart: productosCarrito, addToCart, removeFromCart, clearCart  }}>
       {children}
     </CartContext.Provider>
   );
