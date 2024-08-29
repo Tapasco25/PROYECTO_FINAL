@@ -9,7 +9,7 @@ const Cart = () => {
   return (
     <div className={styles.cartContainer}>
       <h2 className={styles.title}>LIST PRODUCTS</h2>
-      {cart.length === 0 ? (
+      {cart?.length === 0 ? (
         <p className={styles.emptyMessage}>PRODUCT BASKET</p>
       ) : (
         <div>
@@ -19,9 +19,12 @@ const Cart = () => {
               <h3>{product.title}</h3>
               <img src={product.image} alt={product.name} />
               <p>{product.price}</p>
-              <p>Quantity: {product.quantity}</p>
-              <button onClick={() => removeFromCart(product)} className={styles.removeButton}>
-               Delete from cart
+              <p>Quantity: {product.cantidad}</p>
+              <button
+                onClick={() => removeFromCart(product)}
+                className={styles.removeButton}
+              >
+                Delete from cart
               </button>
             </div>
           ))}

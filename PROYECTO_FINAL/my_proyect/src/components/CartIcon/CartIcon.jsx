@@ -9,19 +9,20 @@ const CartIcon = () => {
   const [showCart, setShowCart] = useState(false);
 
   // Contar la cantidad total de productos en el carrito
-  const totalItems = cart?.reduce((total, item) => total + item.quantity, 0);
+  const totalItems =
+    cart?.reduce((total, item) => total + (item.cantidad || 0), 0) || 0;
   const navigate = useNavigate();
-  const pagCart = () =>{
-    navigate('Cart')
-  }
+  const pagCart = () => {
+    navigate("Cart");
+  };
 
   return (
     <div className={styles.cartIcon}>
       <span onClick={pagCart}>
-      <i
-        className={`${styles.cartIconIcon} bi bi-cart4`}
-        onClick={() => setShowCart(!showCart)}>
-        </i>
+        <i
+          className={`${styles.cartIconIcon} bi bi-cart4`}
+          onClick={() => setShowCart(!showCart)}
+        ></i>
       </span>
 
       {totalItems > 0 && (

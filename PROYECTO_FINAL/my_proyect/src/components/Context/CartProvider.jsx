@@ -25,15 +25,18 @@ export const CartProvider = ({ children }) => {
 
   const GetCarrito = () => {
     if (usuario) {
+      console.log(usuario);
       fetch(`http://localhost:3000/carrito/id_usuario/${usuario.uid}`)
         .then((res) => res.json())
         .then((data) => {
-          setCart(data);
-          setProductosCarrito(data.id_producto); // Actualiza los productos en el carrito
+          console.log("Datos recibidos:", data);
+          setCart(data || {});
+          setProductosCarrito(data.id_producto || []); // Actualiza los productos en el carrito
         })
         .catch((error) => console.error("Error al obtener el carrito:", error));
     }
   };
+  console.log(cart);
 
   const addToCart = (product, cantidad = 1) => {
     if (!usuario) {
@@ -41,15 +44,25 @@ export const CartProvider = ({ children }) => {
       return;
     }
 
+    if (!cart.id_carrito) {
+      console.error(
+        "id_carrito no encontrado en el carrito. No se puede agregar al carrito."
+      );
+      return;
+    }
+
     const updatedProducts = [
-      { cantidad, id_producto: product.id },
+      { cantidad, id_producto: product?.id },
       ...productosCarrito,
     ];
 
     fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id_producto: updatedProducts }),
+      body: JSON.stringify({
+        id_producto: updatedProducts,
+        id_usuario: usuario.uid,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -61,7 +74,9 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = (productId) => {
     if (!usuario) {
-      console.error("Usuario no autenticado. No se puede eliminar del carrito.");
+      console.error(
+        "Usuario no autenticado. No se puede eliminar del carrito."
+      );
       return;
     }
 
@@ -102,7 +117,9 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart: productosCarrito, addToCart, removeFromCart, clearCart  }}>
+    <CartContext.Provider
+      value={{ cart: productosCarrito, addToCart, removeFromCart, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );

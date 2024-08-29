@@ -38,6 +38,7 @@ const RegisterForm = () => {
         password
       );
       const newUser = userCredential.user;
+      console.log(newUser.uid, newUser.email, name);
 
       // Enviar datos del nuevo usuario al backend
       await fetch("http://localhost:3000/usuarios", {
