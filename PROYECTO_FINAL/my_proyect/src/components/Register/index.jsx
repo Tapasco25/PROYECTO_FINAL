@@ -75,7 +75,7 @@ const RegisterForm = () => {
   return (
     <form onSubmit={handleRegister} className={styles.sign_inForm}>
       <label htmlFor="name" className={styles.sign_inLabel}>
-        Nombre:
+        Nombre completo:
       </label>
       <input
         type="text"

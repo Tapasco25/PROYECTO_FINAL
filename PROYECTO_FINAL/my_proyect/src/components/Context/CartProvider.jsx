@@ -51,10 +51,17 @@ export const CartProvider = ({ children }) => {
       return;
     }
 
-    const updatedProducts = [
-      { cantidad, id_producto: product?.id },
-      ...productosCarrito,
-    ];
+    const updatedProducts = productosCarrito.map((item)=> 
+      item.id_producto === product.id
+  ? {...item, cantidad: item.cantidad + cantidad}
+: item);
+
+const productoExiste = updatedProducts.find(
+(item) => item.id_producto === product.id
+);
+if (!productoExiste) {
+  updatedProducts.push ({cantidad, id_producto : product.id})
+};
 
     fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
       method: "PUT",
@@ -116,9 +123,56 @@ export const CartProvider = ({ children }) => {
       .catch((error) => console.error("Error al vaciar el carrito:", error));
   };
 
+  const buy = () => {
+    if (!usuario) {
+      console.error(
+        "Usuario no autenticado. No se puede proceder con la compra."
+      );
+      return;
+    }
+
+    if (productosCarrito.length === 0) {
+      console.error(
+        "No hay productos en el carrito. No se puede proceder con la compra."
+      );
+      return;
+    }
+
+    // Aquí podrías hacer una solicitud a tu servidor para crear una orden o procesar el pago
+    fetch(`http://localhost:3000/ordenes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id_usuario: usuario.uid,
+        productos: productosCarrito,
+        total: calcularTotal(productosCarrito), // Asegúrate de tener una función para calcular el total
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Compra realizada con éxito:", data);
+        clearCart(); // Limpia el carrito después de la compra
+      })
+      .catch((error) => console.error("Error al realizar la compra:", error));
+  };
+
+  // Función para calcular el total del carrito
+  const calcularTotal = (productos) => {
+    return productos.reduce(
+      (acc, producto) => acc + producto.precio * producto.cantidad,
+      0
+    );
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart: productosCarrito, addToCart, removeFromCart, clearCart }}
+      value={{
+        cart: productosCarrito,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        buy,
+      }}
     >
       {children}
     </CartContext.Provider>
