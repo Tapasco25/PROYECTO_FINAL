@@ -79,6 +79,7 @@ if (!productoExiste) {
       .catch((error) => console.error("Error al agregar al carrito:", error));
   };
 
+  
   const removeFromCart = (productId) => {
     if (!usuario) {
       console.error(
@@ -87,9 +88,40 @@ if (!productoExiste) {
       return;
     }
 
-    const updatedProducts = productosCarrito.filter(
-      (producto) => producto.id_producto !== productId
+    if (!cart.id_carrito) {
+      console.error(
+        "id_carrito no encontrado en el carrito. No se puede eliminar del carrito."
+      );
+      return;
+    }
+
+    // Encontrar el producto en el carrito
+    const productIndex = productosCarrito.findIndex(
+      (producto) => producto.id_producto === productId
     );
+
+    if (productIndex === -1) {
+      console.error("Producto no encontrado en el carrito.");
+      return;
+    }
+
+    const productToRemove = productosCarrito[productIndex];
+
+    let updatedProducts;
+
+    // Si la cantidad es mayor a 1, disminuir la cantidad
+    if (productToRemove.cantidad > 1) {
+      updatedProducts = productosCarrito.map((producto) =>
+        producto.id_producto === productId
+          ? { ...producto, cantidad: producto.cantidad - 1 }
+          : producto
+      );
+    } else {
+      // Si la cantidad es 1, eliminar el producto del carrito
+      updatedProducts = productosCarrito.filter(
+        (producto) => producto.id_producto !== productId
+      );
+    }
 
     fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
       method: "PUT",
@@ -110,6 +142,13 @@ if (!productoExiste) {
       return;
     }
 
+    if (!cart.id_carrito) {
+      console.error(
+        "id_carrito no encontrado en el carrito. No se puede vaciar el carrito."
+      );
+      return;
+    }
+
     fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -122,7 +161,6 @@ if (!productoExiste) {
       })
       .catch((error) => console.error("Error al vaciar el carrito:", error));
   };
-
   const buy = () => {
     if (!usuario) {
       console.error(

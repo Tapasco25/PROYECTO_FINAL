@@ -10,13 +10,16 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [estadoCuenta, setEstadoCuenta] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!name || !email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword || !telefono || !direccion || estadoCuenta === "") {
       setError("Todos los campos son obligatorios.");
       return;
     }
@@ -26,8 +29,8 @@ const RegisterForm = () => {
       return;
     }
 
-    if (password.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres.");
+    if (password.length < 8) {
+      setError("La contraseña debe tener al menos 8 caracteres.");
       return;
     }
 
@@ -48,6 +51,9 @@ const RegisterForm = () => {
           uid_usuario: newUser.uid,
           correo_electronico: newUser.email,
           nombre_completo: name,
+          telefono: telefono,
+          direccion: direccion,
+          estado_cuenta: parseInt(estadoCuenta),
         }),
       });
       try {
@@ -94,6 +100,42 @@ const RegisterForm = () => {
         id="email"
         value={email}
         onChange={(event) => setEmail(event.target.value)}
+        className={styles.sign_inInput}
+        required
+      />
+      <br />
+      <label htmlFor="telefono" className={styles.sign_inLabel}>
+        Teléfono:
+      </label>
+      <input
+        type="text"
+        id="telefono"
+        value={telefono}
+        onChange={(event) => setTelefono(event.target.value)}
+        className={styles.sign_inInput}
+        required
+      />
+      <br />
+      <label htmlFor="direccion" className={styles.sign_inLabel}>
+        Dirección:
+      </label>
+      <input
+        type="text"
+        id="direccion"
+        value={direccion}
+        onChange={(event) => setDireccion(event.target.value)}
+        className={styles.sign_inInput}
+        required
+      />
+      <br />
+      <label htmlFor="estadoCuenta" className={styles.sign_inLabel}>
+        Estado de Cuenta:
+      </label>
+      <input
+        type="number"
+        id="estadoCuenta"
+        value={estadoCuenta}
+        onChange={(event) => setEstadoCuenta(event.target.value)}
         className={styles.sign_inInput}
         required
       />
