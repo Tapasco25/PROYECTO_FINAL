@@ -8,9 +8,9 @@
   box-sizing: border-box;
 }
 
-.loginContainer:hover {
+.error{
+  color: #000;
 }
-
 .loginForm {
   display: flex;
   flex-direction: column;
