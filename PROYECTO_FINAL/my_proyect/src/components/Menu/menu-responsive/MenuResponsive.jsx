@@ -3,7 +3,9 @@ import { Link } from "react-scroll";
 import styles from "./menuResponsive.module.css";
 import CartIcon from "../../CartIcon/CartIcon";
 
-const Menu = ({ cerrarLogin }) => {
+const Menu = ({ cerrarLogin, currentUser }) => {
+  const initial = currentUser ? (currentUser.displayName || currentUser.email || currentUser.uid).charAt(0).toUpperCase() : '';
+
   console.log("MenuResponsive renderizado");
   return (
     <>
@@ -24,6 +26,11 @@ const Menu = ({ cerrarLogin }) => {
       <div className={styles.options}>
         <div className={styles.buttonContainer}>
           <CartIcon />
+          {currentUser && (
+            <div className={styles.profileCircle}>
+              {initial}
+            </div>
+          )}
           <button onClick={cerrarLogin} className={styles.homepageCloseButton}>
             LOG OUT
           </button>

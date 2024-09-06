@@ -17,7 +17,7 @@ const cerrarLogin = async () => {
   }
 };
 
-function Header() {
+function Header({currentUser}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -25,11 +25,18 @@ function Header() {
     console.log(isMenuOpen);
   };
 
+  const initial = currentUser ? (currentUser.displayName || currentUser.email || currentUser.uid).charAt(0).toUpperCase() : '';
+
   return (
     <header className={styles.header}>
       <img className={styles.logo} src={img} alt="Logo" />
       <div className={styles.container}>
        
+      {currentUser && (
+          <div className={styles.profileCircle}>
+            {initial}
+          </div>
+        )}
 
         <button
           onClick={toggleMenu}

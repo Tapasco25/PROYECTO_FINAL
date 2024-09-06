@@ -45,7 +45,7 @@ export default function App() {
     <main>
       {currentUser ? (
         <>
-          <Header />
+          <Header currentUser={currentUser}/>
           <main className="main">
             {/* <h1 className="title">STYLES AND FASHION NICOL</h1> */}
             <Slider images={images} />
