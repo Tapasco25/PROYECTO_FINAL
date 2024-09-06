@@ -24,7 +24,7 @@ const Menu = ({ cerrarLogin, currentUser }) => {
       <div className={styles.options}>
         <div className={styles.buttonContainer}>
           <CartIcon />
-          {currentUser && (
+           {currentUser && (
             <div className={styles.profileCircle}>
               {initial}
             </div>
