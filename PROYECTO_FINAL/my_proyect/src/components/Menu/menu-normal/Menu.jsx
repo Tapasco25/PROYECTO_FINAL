@@ -4,7 +4,7 @@ import styles from "../header.module.css";
 import CartIcon from "../../CartIcon/CartIcon";
 
 const Menu = ({ cerrarLogin, currentUser }) => {
-  const initial = currentUser ? (currentUser.displayName || currentUser.email || currentUser.uid).charAt(0).toUpperCase() : '';
+  // const initial = currentUser ? (currentUser.displayName || currentUser.email || currentUser.uid).charAt(0).toUpperCase() : '';
   return (
     <>
       <nav className={styles.nav}>
@@ -24,14 +24,15 @@ const Menu = ({ cerrarLogin, currentUser }) => {
       <div className={styles.options}>
         <div className={styles.buttonContainer}>
           <CartIcon />
-           {currentUser && (
-            <div className={styles.profileCircle}>
-              {initial}
-            </div>
-          )}
+          
           <button onClick={cerrarLogin} className={styles.homepageCloseButton}>
             LOG OUT
           </button>
+           {/* {currentUser && (
+            <div className={styles.profileCircle}>
+              {initial}
+            </div>
+          )} */}
         </div>
       </div>
     </>

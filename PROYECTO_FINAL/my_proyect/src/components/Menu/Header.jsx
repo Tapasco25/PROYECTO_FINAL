@@ -31,13 +31,6 @@ function Header({currentUser}) {
     <header className={styles.header}>
       <img className={styles.logo} src={img} alt="Logo" />
       <div className={styles.container}>
-       
-      {currentUser && (
-          <div className={styles.profileCircle}>
-            {initial}
-          </div>
-        )}
-
         <button
           onClick={toggleMenu}
           className={styles.classMenuBtn}
@@ -46,7 +39,14 @@ function Header({currentUser}) {
           &#9776;
         </button>
         {isMenuOpen ? <MenuResponsive cerrarLogin={cerrarLogin} /> : <Menu cerrarLogin={cerrarLogin} />}
-      </div>
+      </div >
+         {currentUser && (
+          <div  className={styles.profileContainer}>
+          <div className={styles.profileCircle}>
+            {initial}
+          </div>
+          </div>
+        )}
     </header>
   );
 }
