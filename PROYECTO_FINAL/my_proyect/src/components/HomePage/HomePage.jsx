@@ -15,6 +15,7 @@ export default function HomePage() {
   const navigate = useNavigate();
   useEffect(() => {
     if (usuario) navigate("/App");
+    console.log("usuario del context", usuario);
   }, [usuario]);
 
   return (

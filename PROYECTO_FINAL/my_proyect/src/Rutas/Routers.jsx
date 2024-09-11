@@ -5,6 +5,8 @@ import Cart from "../components/Cart/Cart";
 import { RegistePage } from "../pages/register/RegisterPage";
 import { LoginPage } from "../pages/login/LoginPage";
 import HomePage from "../components/HomePage/HomePage";
+import { User } from "../pages/PaginaUsuario/User";
+
 
 // Componente principal para manejar las rutas de la aplicación
 export default function Routers() {
@@ -14,6 +16,7 @@ export default function Routers() {
       {/* Configuramos el enrutador para manejar las diferentes páginas */}
       <BrowserRouter>
         <Routes>
+          <Route path="/user" element={<User/>}/>
           <Route path="/" element={<HomePage />} />
           <Route path="/App" element={<App />} />
           <Route path="/app/Cart" element={<Cart />} />

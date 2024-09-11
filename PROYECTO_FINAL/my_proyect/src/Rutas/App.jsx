@@ -12,11 +12,12 @@ import Slider from "../components/Silder/Slider";
 import img1 from "../assets/slider/img1.jpg";
 import img2 from "../assets/slider/img2.jpg";
 import img3 from "../assets/slider/img3.jpg";
-import img4 from "../assets/slider/img4.jpg"
+import img4 from "../assets/slider/img4.jpg";
 
 export default function App() {
-  const images = [img1, img2, img3,img4];
+  const images = [img1, img2, img3, img4];
   const [currentUser, setcurrentUser] = useState(null); // Estado para guardar información del usuario
+  // console.log("currentUser", currentUser);
   // Hook personalizado para obtener productos de diferentes categorías
   const { data: electronics } = useFetch(
     "https://fakestoreapi.com/products/category/electronics"
@@ -35,21 +36,25 @@ export default function App() {
   );
   // Efecto para manejar el estado de autenticación del usuario
   useEffect(() => {
-      // Verifica si hay un usuario autenticado
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setcurrentUser(currentUser);
+    // Verifica si hay un usuario autenticado
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setcurrentUser(currentUser);
+      } else {
+        navigate("/");
+      }
+
       console.log(currentUser ? "Usuario encontrado" : "Usuario no encontrado");
     });
-
-    return () => unsubscribe(); // Limpia el efecto para evitar fugas de memoria
-  }, []);
+  }, [currentUser]);
   const navigate = useNavigate();
+
   return (
     <main>
-       {/* Muestra la vista principal si hay un usuario autenticado */}
+      {/* Muestra la vista principal si hay un usuario autenticado */}
       {currentUser ? (
         <>
-          <Header currentUser={currentUser}/>
+          <Header currentUser={currentUser} />
           <main className="main">
             {/* <h1 className="title">STYLES AND FASHION NICOL</h1> */}
             <Slider images={images} />

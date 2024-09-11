@@ -7,6 +7,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../fireBase/Credenciales";
 import Menu from "./menu-normal/Menu";
 import MenuResponsive from "./menu-responsive/MenuResponsive";
+import { useNavigate } from "react-router-dom";
 
 // Función para cerrar la sesión del usuario
 const cerrarLogin = async () => {
@@ -20,7 +21,9 @@ const cerrarLogin = async () => {
 
 // Componente Header que recibe la información del usuario actual
 function Header({ currentUser }) {
+  const navigate = useNavigate();
   // Estado para manejar la apertura y cierre del menú
+  const [user, setUser] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Función para alternar la visibilidad del menú
@@ -35,6 +38,14 @@ function Header({ currentUser }) {
         .charAt(0)
         .toUpperCase()
     : "";
+
+  const dataUser = () => {
+    setUser(true);
+    if (user) {
+      setUser(false);
+      navigate("/user");
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -56,11 +67,11 @@ function Header({ currentUser }) {
       </div>
       {/* Muestra el círculo con la inicial del usuario si el usuario está logueado */}
       {currentUser && (
-        <div className={styles.profileContainer}>
-          <div className={styles.profileCircle}>
+        <button className={styles.profileContainer}>
+          <div onClick={dataUser} className={styles.profileCircle}>
             {initial} {/* Muestra la inicial del usuario */}
           </div>
-        </div>
+        </button>
       )}
     </header>
   );

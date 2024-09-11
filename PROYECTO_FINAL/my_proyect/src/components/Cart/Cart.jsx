@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const navigate = useNavigate();
   // Extraemos las funciones y el carrito del contexto global del carrito
-  const { cart, removeFromCart, clearCart, buy } = useContext(CartContext);
+  const { cart, removeFromCart, clearCart } = useContext(CartContext);
 
   // useState para almacenar los detalles de los productos del carrito
   const [productsDetails, setProductosDetails] = useState({});
@@ -72,14 +72,15 @@ const Cart = () => {
             onClick={() => {
               clearCart();
               navigate("/app");
+              // location.reload();
             }}
             className={styles.clearButton}
           >
             Clear cart
           </button>
-          <button onClick={() => buy()} className={styles.BuyButton}>
+          {/* <button onClick={() => buy()} className={styles.BuyButton}>
             Buy
-          </button>
+          </button> */}
         </div>
       )}
     </div>

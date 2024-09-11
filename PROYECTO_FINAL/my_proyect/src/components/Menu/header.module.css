@@ -141,6 +141,9 @@ body {
   display: flex;
   align-items: center;
   gap: 15px; /* Espacio entre el círculo de perfil y el botón */
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
 .profileCircle {
@@ -157,7 +160,6 @@ body {
   text-transform: uppercase;
   margin-right: 10px; /* Espacio a la derecha para separarlo del botón */
 }
-
 
 @media (max-width: 850px) {
   .header {

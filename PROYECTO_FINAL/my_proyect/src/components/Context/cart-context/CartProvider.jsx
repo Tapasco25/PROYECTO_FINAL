@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CartContext } from "./CartContext";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../../fireBase/Credenciales";
 import useAuth from "../auth-context/AuthContext";
 
 // Componente que gestiona el estado del carrito de compras y la autenticación del usuario.
@@ -9,8 +7,6 @@ export const CartProvider = ({ children }) => {
   const { usuario } = useAuth();
   const [cart, setCart] = useState([]); // Estado que almacena el carrito completo
   const [productosCarrito, setProductosCarrito] = useState([]); // Estado que contiene los productos agregados al carrito
-
-  // useEffect para detectar el cambio en el estado de autenticación del usuario
 
   // useEffect que se ejecuta cuando el usuario está autenticado para obtener los productos del carrito
   useEffect(() => {
@@ -26,7 +22,7 @@ export const CartProvider = ({ children }) => {
       await fetch(`http://localhost:3000/carrito/id_usuario/${usuario.uid}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log("Datos recibidos:", data);
+          // console.log("Datos recibidos:", data);
           setCart(data || {}); // Actualiza el carrito con los datos recibidos
           setProductosCarrito(data.id_producto || []); // Actualiza los productos en el carrito
         })
@@ -76,18 +72,6 @@ export const CartProvider = ({ children }) => {
 
   // Función para eliminar un producto del carrito
   const removeFromCart = (productId) => {
-    // if (!usuario) {
-    //   console.error(
-    //     "Usuario no autenticado. No se puede eliminar del carrito."
-    //   );
-    //   return;
-    // }
-    // if (!cart.id_carrito) {
-    //   console.error(
-    //     "id_carrito no encontrado en el carrito. No se puede eliminar del carrito."
-    //   );
-    //   return;
-    // }
     // Encontrar el producto en el carrito
     const productToChange = productosCarrito.find(
       (producto) => producto.id_producto === productId
@@ -152,46 +136,6 @@ export const CartProvider = ({ children }) => {
       .catch((error) => console.error("Error al vaciar el carrito:", error));
     setCart([]);
   };
-  const buy = () => {
-    if (!usuario) {
-      console.error(
-        "Usuario no autenticado. No se puede proceder con la compra."
-      );
-      return;
-    }
-
-    if (productosCarrito.length === 0) {
-      console.error(
-        "No hay productos en el carrito. No se puede proceder con la compra."
-      );
-      return;
-    }
-
-    // Aquí podrías hacer una solicitud a tu servidor para crear una orden o procesar el pago
-    fetch(`http://localhost:3000/ordenes`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id_usuario: usuario.uid,
-        productos: productosCarrito,
-        total: calcularTotal(productosCarrito), // Asegúrate de tener una función para calcular el total
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Compra realizada con éxito:", data);
-        clearCart(); // Limpia el carrito después de la compra
-      })
-      .catch((error) => console.error("Error al realizar la compra:", error));
-  };
-
-  // Función para calcular el total del carrito
-  // const calcularTotal = (productos) => {
-  //   return productos.reduce(
-  //     (acc, producto) => acc + producto.precio * producto.cantidad,
-  //     0
-  //   );
-  // };
 
   // Provee el contexto del carrito a los componentes hijos
   return (
@@ -201,7 +145,6 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         clearCart,
-        buy,
       }}
     >
       {children}
