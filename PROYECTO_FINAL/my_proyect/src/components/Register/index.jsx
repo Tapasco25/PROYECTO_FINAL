@@ -73,11 +73,11 @@ const RegisterForm = () => {
             id_producto: [],
           }),
         });
+        navigate("/app");
       } catch (error) {
         console.error("Error al crear el carrito", error);
       }
       console.log("Usuario creado con éxito");
-      navigate("/app");
     } catch (error) {
       console.error("Error al crear la cuenta", error);
       setError(

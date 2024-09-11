@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../src/App.css";
 import img from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Login from "../Login/Login";
 import { auth } from "../../fireBase/Credenciales";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 // Definimos el componente funcional HomePage, que es la página principal de la aplicación.
 export default function HomePage() {
@@ -13,6 +13,14 @@ export default function HomePage() {
   const mostrarLogin = () => {
     setShowLogin(true); // Función que cambia el estado a true para mostrar el modal de inicio de sesión.
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/App");
+      }
+    });
+  }, []);
 
   return (
     <div className="homepage">
