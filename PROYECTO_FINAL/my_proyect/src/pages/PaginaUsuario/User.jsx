@@ -41,15 +41,8 @@ export const User = () => {
 
   return (
     <main className={styles.userMain}>
-      <button
-        type="button"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        Atrás
-      </button>
       <div className={styles.userContainer}>
+        <h1 className={styles.titleInfo}> Informacion de usuario</h1>
         <label className={styles.userLabel}>Nombre completo</label>
         <input
           type="text"
@@ -78,6 +71,15 @@ export const User = () => {
           className={styles.userInput}
           readOnly
         ></input>
+
+        <button className={styles.buttonAtras}
+        type="button"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Atrás
+      </button>
       </div>
     </main>
   );
