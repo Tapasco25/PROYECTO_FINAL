@@ -3,9 +3,9 @@ import styles from "./register.module.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../fireBase/Credenciales";
-// import { auth } from "../firebase"; // Asegúrate de importar tu configuración de Firebase
 
 const RegisterForm = () => {
+  // Estados para guardar la información del formulario
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,14 +13,22 @@ const RegisterForm = () => {
   const [telefono, setTelefono] = useState("");
   const [direccion, setDireccion] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Para redirigir después del registro
 
+  // Función para manejar el registro
   const handleRegister = async (e) => {
-    e.preventDefault();
-
-    if (!name || !email || !password || !confirmPassword || !telefono || !direccion  === "") {
+    e.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+    // Verifica si todos los campos están llenos
+    if (
+      !name ||
+      !email ||
+      !password ||
+      !confirmPassword ||
+      !telefono ||
+      !direccion === ""
+    ) {
       setError("Todos los campos son obligatorios.");
-      return;
+      return; // Detiene la ejecución si falta algún campo
     }
 
     if (password !== confirmPassword) {
@@ -34,12 +42,13 @@ const RegisterForm = () => {
     }
 
     try {
+      // Registrar al usuario en Firebase
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      const newUser = userCredential.user;
+      const newUser = userCredential.user; // Obtiene los datos del nuevo usuario
       console.log(newUser.uid, newUser.email, name);
 
       // Enviar datos del nuevo usuario al backend
@@ -52,9 +61,9 @@ const RegisterForm = () => {
           nombre_completo: name,
           telefono: telefono,
           direccion: direccion,
-          
         }),
       });
+      // Crea un carrito vacío para el nuevo usuario
       try {
         await fetch("http://localhost:3000/carrito", {
           method: "POST",

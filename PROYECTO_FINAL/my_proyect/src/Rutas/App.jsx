@@ -16,7 +16,8 @@ import img4 from "../assets/slider/img4.jpg"
 
 export default function App() {
   const images = [img1, img2, img3,img4];
-  const [currentUser, setcurrentUser] = useState(null);
+  const [currentUser, setcurrentUser] = useState(null); // Estado para guardar información del usuario
+  // Hook personalizado para obtener productos de diferentes categorías
   const { data: electronics } = useFetch(
     "https://fakestoreapi.com/products/category/electronics"
   );
@@ -32,7 +33,9 @@ export default function App() {
   const { data: womensclothing } = useFetch(
     "https://fakestoreapi.com/products/category/women's%20clothing"
   );
+  // Efecto para manejar el estado de autenticación del usuario
   useEffect(() => {
+      // Verifica si hay un usuario autenticado
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setcurrentUser(currentUser);
       console.log(currentUser ? "Usuario encontrado" : "Usuario no encontrado");
@@ -43,6 +46,7 @@ export default function App() {
   const navigate = useNavigate();
   return (
     <main>
+       {/* Muestra la vista principal si hay un usuario autenticado */}
       {currentUser ? (
         <>
           <Header currentUser={currentUser}/>
@@ -92,7 +96,7 @@ export default function App() {
           </main>
         </>
       ) : (
-        navigate("/")
+        navigate("/") // Redirige a la página principal si no hay usuario autenticado
       )}
     </main>
   );

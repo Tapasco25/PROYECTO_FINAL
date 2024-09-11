@@ -6,9 +6,12 @@ import { RegistePage } from "../pages/register/RegisterPage";
 import { LoginPage } from "../pages/login/LoginPage";
 import HomePage from "../components/HomePage/HomePage";
 
+// Componente principal para manejar las rutas de la aplicación
 export default function Routers() {
   return (
+    // Proporcionamos el contexto del carrito de compras a toda la aplicación
     <CartProvider>
+       {/* Configuramos el enrutador para manejar las diferentes páginas */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />

@@ -3,26 +3,30 @@ import { CartContext } from "./CartContext";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../fireBase/Credenciales";
 
+// Componente que gestiona el estado del carrito de compras y la autenticación del usuario.
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-  const [usuario, setUsuario] = useState(null);
-  const [productosCarrito, setProductosCarrito] = useState([]);
+  const [cart, setCart] = useState([]); // Estado que almacena el carrito completo
+  const [usuario, setUsuario] = useState(null);// Estado que guarda la información del usuario autenticado
+  const [productosCarrito, setProductosCarrito] = useState([]);// Estado que contiene los productos agregados al carrito
 
+    // useEffect para detectar el cambio en el estado de autenticación del usuario
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUsuario(currentUser);
+      setUsuario(currentUser); // Actualiza el estado del usuario cuando hay un cambio
       console.log(currentUser ? "Usuario encontrado" : "Usuario no encontrado");
     });
 
     return () => unsubscribe(); // Limpia el efecto para evitar fugas de memoria
   }, []);
 
+   // useEffect que se ejecuta cuando el usuario está autenticado para obtener los productos del carrito
   useEffect(() => {
     if (usuario) {
-      GetCarrito();
+      GetCarrito();// Llama a la función para obtener el carrito del usuario autenticado
     }
   }, [usuario]);
 
+  // Función que obtiene los productos del carrito del usuario desde la API
   const GetCarrito = () => {
     if (usuario) {
       console.log(usuario);
@@ -30,7 +34,7 @@ export const CartProvider = ({ children }) => {
         .then((res) => res.json())
         .then((data) => {
           console.log("Datos recibidos:", data);
-          setCart(data || {});
+          setCart(data || {}); // Actualiza el carrito con los datos recibidos
           setProductosCarrito(data.id_producto || []); // Actualiza los productos en el carrito
         })
         .catch((error) => console.error("Error al obtener el carrito:", error));
@@ -38,30 +42,34 @@ export const CartProvider = ({ children }) => {
   };
   console.log(cart);
 
+// Función para agregar un producto al carrito
   const addToCart = (product, cantidad = 1) => {
     if (!usuario) {
       console.error("Usuario no autenticado. No se puede agregar al carrito.");
       return;
     }
 
+    // Verifica si el producto ya está en el carrito y actualiza la cantidad
     const updatedProducts = productosCarrito.map((item)=> 
       item.id_producto === product.id
-  ? {...item, cantidad: item.cantidad + cantidad}
+  ? {...item, cantidad: item.cantidad + cantidad}// Incrementa la cantidad si el producto ya existe
 : item);
 
 const productoExiste = updatedProducts.find(
 (item) => item.id_producto === product.id
 );
+ // Si el producto no existe, lo agrega al carrito
 if (!productoExiste) {
   updatedProducts.push ({cantidad, id_producto : product.id})
 };
 
+// Envía la actualización del carrito al servidor
     fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        id_producto: updatedProducts,
-        id_usuario: usuario.uid,
+        id_producto: updatedProducts, // Enviar productos actualizados
+        id_usuario: usuario.uid,// Enviar ID del usuario autenticado
       }),
     })
       .then((res) => res.json())
@@ -72,7 +80,7 @@ if (!productoExiste) {
       .catch((error) => console.error("Error al agregar al carrito:", error));
   };
 
-  
+  // Función para eliminar un producto del carrito
   const removeFromCart = (productId) => {
     if (!usuario) {
       console.error(
@@ -115,11 +123,11 @@ if (!productoExiste) {
         (producto) => producto.id_producto !== productId
       );
     }
-
+ // Envía la actualización al servidor
     fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id_producto: updatedProducts }),
+      body: JSON.stringify({ id_producto: updatedProducts }), // Enviar productos actualizados
     })
       .then((res) => res.json())
       .then((data) => {
@@ -128,7 +136,7 @@ if (!productoExiste) {
       })
       .catch((error) => console.error("Error al eliminar del carrito:", error));
   };
-
+// Función para vaciar el carrito completamente
   const clearCart = () => {
     if (!usuario) {
       console.error("Usuario no autenticado. No se puede vaciar el carrito.");
@@ -141,11 +149,11 @@ if (!productoExiste) {
       );
       return;
     }
-
+// Envía la solicitud para vaciar el carrito al servidor
     fetch(`http://localhost:3000/carrito/id_carrito/${cart.id_carrito}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id_producto: [] }),
+      body: JSON.stringify({ id_producto: [] }),// Enviar un carrito vacío
     })
       .then((res) => res.json())
       .then((data) => {
@@ -194,7 +202,8 @@ if (!productoExiste) {
   //     0
   //   );
   // };
-
+  
+// Provee el contexto del carrito a los componentes hijos
   return (
     <CartContext.Provider
       value={{

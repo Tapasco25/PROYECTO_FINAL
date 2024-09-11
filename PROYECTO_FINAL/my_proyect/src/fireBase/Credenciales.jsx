@@ -4,8 +4,8 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Configuración de Firebase para tu aplicación web
+// Puedes encontrar más detalles en la documentación de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCfuWe7fCZCgYHh3TJXYvunOFjIhA_ml2o",
   authDomain: "proyectofinal-23d43.firebaseapp.com",
@@ -16,7 +16,9 @@ const firebaseConfig = {
   measurementId: "G-Q0B29X46LX"
 };
 
-// Initialize Firebase
+// Inicializa la aplicación de Firebase con la configuración proporcionada
 const app = initializeApp(firebaseConfig);
+// Obtiene el servicio de autenticación de Firebase
 const auth = getAuth(app);
+
 export {auth,app}

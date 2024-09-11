@@ -11,14 +11,19 @@ import RegisterForm from "../Register/index";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+  // Estado para almacenar el email y la contraseña del usuario
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+    // Estado para almacenar el usuario autenticado
   const [user, setUser] = useState(null);
+    // Estado para alternar entre el formulario de inicio de sesión y registro
   const [registrar, setRegistrar] = useState(false);
+    // Estado para manejar mensajes de error
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate();// Hook para redireccionar después del login
 
   useEffect(() => {
+    // Configura un listener para el estado de autenticación del usuario
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log(currentUser ? "Usuario encontrado" : "Usuario no encontrado");
@@ -26,25 +31,25 @@ function Login() {
 
     return () => unsubscribe(); // Limpia el efecto para evitar fugas de memoria
   }, []);
-
+ // Maneja el inicio de sesión con email y contraseña
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault();// Evita el comportamiento por defecto del formulario
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("Has iniciado sesión");
-      navigate("/app");
+      navigate("/app");// Redirecciona al usuario a la página principal de la aplicación
     } catch (error) {
       console.error("Error al iniciar sesión", error);
       setError("Error al iniciar sesión. Por favor, revisa tus credenciales.");
     }
   };
-
+// Maneja el registro de un nuevo usuario (aún no registrado)
   const handleRegister = async (e) => {
-    e.preventDefault();
+    e.preventDefault();// Evita el comportamiento por defecto del formulario
     console.log("Registrando usuario...");
     // Llama a la función de registro de usuario si es necesario
   };
-
+ // Maneja el inicio de sesión con Google
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
@@ -58,7 +63,7 @@ function Login() {
       );
     }
   };
-
+ // Alterna entre el registro y el inicio de sesión en función del estado `registrar`
   const submitHandler = (e) => {
     registrar ? handleRegister(e) : handleLogin(e);
   };
@@ -78,7 +83,7 @@ function Login() {
               type="email"
               id="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}// Actualiza el estado de `email` al cambiar el input
               required
             />
           </div>
@@ -88,18 +93,18 @@ function Login() {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}// Actualiza el estado de `password` al cambiar el input
               required
             />
           </div>
-          {error && <p className={styles.error}>{error}</p>}
+          {error && <p className={styles.error}>{error}</p>} {/* Muestra el mensaje de error si existe */}
           <button type="submit" className={styles.loginButton}>
             SIGN IN
           </button>
         </form>
       )}
       <button
-        onClick={() => setRegistrar(!registrar)}
+        onClick={() => setRegistrar(!registrar)} // Alterna el estado de `registrar` al hacer clic
         className={styles.buttonIniciar}
       >
         {registrar ? "¿DO YOU WANT TO START?" : "¿DO YOU WANT TO REGISTER?"}
