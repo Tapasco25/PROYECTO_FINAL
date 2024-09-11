@@ -32,25 +32,25 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #666; /* Color gris medio */
+  color: #666; 
 }
 
-/* Estilos para los inputs de usuario */
+
 .userInput {
   padding: 12px;
-  border: 1px solid #ddd; /* Borde gris claro */
+  border: 1px solid #ddd; 
   border-radius: 8px;
   margin-bottom: 15px;
   font-size: 16px;
-  color: #333; /* Color gris oscuro para el texto */
-  background-color: #f9f9f9; /* Fondo gris claro para los inputs */
-  cursor: not-allowed; /* Cursor para indicar que el input es solo lectura */
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna sutil */
+  color: #333; 
+  background-color: #f9f9f9; 
+  cursor: not-allowed;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
 }
 
-/* Estilo para el botón de atrás */
+
 .buttonAtras {
-  background-color: #6c63ff; /* Color de fondo lila */
+  background-color: #6c63ff; 
   color: white;
   border: none;
   padding: 12px 20px;
@@ -65,5 +65,5 @@
 }
 
 .buttonAtras:hover {
-  background-color: #5a52e3; /* Color de fondo lila más oscuro al pasar el ratón */
+  background-color: #5a52e3; 
 }
