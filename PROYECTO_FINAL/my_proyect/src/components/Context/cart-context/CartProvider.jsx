@@ -1,23 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "./CartContext";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../fireBase/Credenciales";
+import { auth } from "../../../fireBase/Credenciales";
+import useAuth from "../auth-context/AuthContext";
 
 // Componente que gestiona el estado del carrito de compras y la autenticación del usuario.
 export const CartProvider = ({ children }) => {
+  const { usuario } = useAuth();
   const [cart, setCart] = useState([]); // Estado que almacena el carrito completo
-  const [usuario, setUsuario] = useState(null); // Estado que guarda la información del usuario autenticado
   const [productosCarrito, setProductosCarrito] = useState([]); // Estado que contiene los productos agregados al carrito
 
   // useEffect para detectar el cambio en el estado de autenticación del usuario
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUsuario(currentUser); // Actualiza el estado del usuario cuando hay un cambio
-      console.log(currentUser ? "Usuario encontrado" : "Usuario no encontrado");
-    });
-
-    return () => unsubscribe(); // Limpia el efecto para evitar fugas de memoria
-  }, []);
 
   // useEffect que se ejecuta cuando el usuario está autenticado para obtener los productos del carrito
   useEffect(() => {
@@ -157,8 +150,7 @@ export const CartProvider = ({ children }) => {
         console.log("Carrito vaciado:", data);
       })
       .catch((error) => console.error("Error al vaciar el carrito:", error));
-      setCart([])
-      
+    setCart([]);
   };
   const buy = () => {
     if (!usuario) {

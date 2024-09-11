@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CartContext } from "../Context/CartContext";
+import { CartContext } from "../Context/cart-context/CartContext";
 import styles from "./Product.module.css";
 
 // Componente para mostrar la información de un producto
