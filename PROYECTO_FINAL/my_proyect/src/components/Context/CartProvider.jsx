@@ -44,13 +44,6 @@ export const CartProvider = ({ children }) => {
       return;
     }
 
-    if (!cart.id_carrito) {
-      console.error(
-        "id_carrito no encontrado en el carrito. No se puede agregar al carrito."
-      );
-      return;
-    }
-
     const updatedProducts = productosCarrito.map((item)=> 
       item.id_producto === product.id
   ? {...item, cantidad: item.cantidad + cantidad}
@@ -195,12 +188,12 @@ if (!productoExiste) {
   };
 
   // Función para calcular el total del carrito
-  const calcularTotal = (productos) => {
-    return productos.reduce(
-      (acc, producto) => acc + producto.precio * producto.cantidad,
-      0
-    );
-  };
+  // const calcularTotal = (productos) => {
+  //   return productos.reduce(
+  //     (acc, producto) => acc + producto.precio * producto.cantidad,
+  //     0
+  //   );
+  // };
 
   return (
     <CartContext.Provider

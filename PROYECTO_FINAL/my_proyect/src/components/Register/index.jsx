@@ -12,14 +12,13 @@ const RegisterForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [telefono, setTelefono] = useState("");
   const [direccion, setDireccion] = useState("");
-  const [estadoCuenta, setEstadoCuenta] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!name || !email || !password || !confirmPassword || !telefono || !direccion || estadoCuenta === "") {
+    if (!name || !email || !password || !confirmPassword || !telefono || !direccion  === "") {
       setError("Todos los campos son obligatorios.");
       return;
     }
@@ -53,7 +52,7 @@ const RegisterForm = () => {
           nombre_completo: name,
           telefono: telefono,
           direccion: direccion,
-          estado_cuenta: parseInt(estadoCuenta),
+          
         }),
       });
       try {
@@ -124,18 +123,6 @@ const RegisterForm = () => {
         id="direccion"
         value={direccion}
         onChange={(event) => setDireccion(event.target.value)}
-        className={styles.sign_inInput}
-        required
-      />
-      <br />
-      <label htmlFor="estadoCuenta" className={styles.sign_inLabel}>
-        Estado de Cuenta:
-      </label>
-      <input
-        type="number"
-        id="estadoCuenta"
-        value={estadoCuenta}
-        onChange={(event) => setEstadoCuenta(event.target.value)}
         className={styles.sign_inInput}
         required
       />

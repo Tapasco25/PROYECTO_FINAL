@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../../src/App.css";
 import img from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-import Login from "../Login/Login"; // Asegúrate de que la ruta sea correcta
+import Login from "../Login/Login"; 
 import { auth } from "../../fireBase/Credenciales";
 import { signOut } from "firebase/auth";
 

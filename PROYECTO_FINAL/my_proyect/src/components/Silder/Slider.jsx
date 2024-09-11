@@ -14,13 +14,13 @@ const Slider = ({ images }) => {
     setCurrentIndex(index);
   };
 
-  // Change image automatically every 3 seconds
+  // Cambiar imagen automáticamente cada 3 segundos
   useEffect(() => {
     const intervalId = setInterval(() => {
       goToNext();
-    }, 3000); // 3000 milliseconds = 3 seconds
+    }, 3000); // 3000 milisegundos = 3 segundos
 
-    // Clean up the interval on component unmount
+    // Limpiar el intervalo al desmontar el componente
     return () => clearInterval(intervalId);
   }, [currentIndex, images.length]);
 

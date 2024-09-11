@@ -39,7 +39,7 @@ useEffect (()=> {
             return (
               <div key={product.id_producto} className={styles.productTarget}>
                 <h3>{details?.title}</h3>
-                <p>{details?.description}</p>
+                {/* <p>{details?.description}</p> */}
                 <img src={details?.image} alt={details?.title} />
                 <p>{details?.price}</p>
                 <p>Quantity: {product.cantidad}</p>
