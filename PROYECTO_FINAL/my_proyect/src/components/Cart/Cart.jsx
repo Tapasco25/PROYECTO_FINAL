@@ -78,6 +78,15 @@ const Cart = () => {
           >
             Clear cart
           </button>
+          
+          <button className={styles.buttonAtras}
+        type="button"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Atrás
+      </button>
           {/* <button onClick={() => buy()} className={styles.BuyButton}>
             Buy
           </button> */}

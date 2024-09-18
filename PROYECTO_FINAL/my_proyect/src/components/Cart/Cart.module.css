@@ -104,6 +104,27 @@
     transform: scale(1.05); 
   }
 
+  .buttonAtras {
+    background-color: #ab47bc; 
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    width: 100%;
+    transform: scale(1);
+  }
+  
+  .buttonAtras:hover {
+    background-color: #9c27b0; 
+    transform: scale(1.05); 
+  }
+
+
+
+
   .BuyButton{
     background-color: #ab47bc; 
     color: white;
@@ -117,6 +138,9 @@
     transform: scale(1);
   }
   
+  
+
+
   .BuyButton:hover {
     background-color: #9c27b0; 
     transform: scale(1.05); 
