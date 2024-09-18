@@ -78,7 +78,7 @@ export const User = () => {
         <button className={styles.buttonAtras}
         type="button"
         onClick={() => {
-          navigate("/");
+          navigate("/app");
         }}
       >
         Atrás

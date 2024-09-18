@@ -82,7 +82,7 @@ const Cart = () => {
           <button className={styles.buttonAtras}
         type="button"
         onClick={() => {
-          navigate("/");
+          navigate("/app");
         }}
       >
         Atrás
