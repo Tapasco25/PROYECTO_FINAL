@@ -34,7 +34,7 @@ function Header({ currentUser }) {
 
   // Obtiene la inicial del nombre del usuario, o la primera letra del email o UID si no hay nombre
   const initial = currentUser
-    ? (currentUser.displayName || currentUser.email || currentUser.uid)
+    ? (currentUser.displayName || currentUser.email)
         .charAt(0)
         .toUpperCase()
     : "";

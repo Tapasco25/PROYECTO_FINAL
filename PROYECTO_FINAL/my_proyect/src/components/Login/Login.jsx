@@ -109,9 +109,7 @@ function Login() {
       >
         {registrar ? "¿DO YOU WANT TO START?" : "¿DO YOU WANT TO REGISTER?"}
       </button>
-      <button onClick={handleGoogleLogin} className={styles.googleButton}>
-        SIGN IN WITH GOOGLE
-      </button>
+      
       {/* )} */}
     </div>
   );

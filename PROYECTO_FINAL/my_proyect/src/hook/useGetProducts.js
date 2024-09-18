@@ -18,7 +18,7 @@ export const useFetch = (url) => {
       // console.log(error)
     }
   }
-  // useEffect se ejecuta una vez cuando el componente se monta
+  // useEffect se ejecuta una vez cuando el componente se reenderiza
   useEffect(() => {
     getData();
   }, []); // El array vacío asegura que solo se ejecute una vez

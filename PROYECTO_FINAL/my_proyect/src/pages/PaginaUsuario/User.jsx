@@ -5,23 +5,26 @@ import { data } from "autoprefixer";
 import { useNavigate } from "react-router-dom";
 
 export const User = () => {
-  const navigate = useNavigate();
-  const { usuario } = useAuth();
+  const navigate = useNavigate();// Hook para la navegación entre páginas
+  const { usuario } = useAuth(); // Obtenemos la información del usuario desde el contexto de autenticación
+
   const [user, setUser] = useState({
     telefono: "",
     correo_electronico: "",
     direccion: "",
     nombre_completo: "",
   });
-  const uid = usuario?.uid;
+  const uid = usuario?.uid;  // Obtenemos el UID del usuario autenticado
 
   const getUserData = async () => {
-    if (!uid) return;
+    if (!uid) return;// Si no hay UID, salimos de la función
     try {
       const response = await fetch(`http://localhost:3000/usuarios/${uid}`);
       const data = await response.json();
-      // console.log("getUserData desde el fetch", data);
+     
 
+
+      // Actualizamos el estado con los datos recibidos de la API
       setUser({
         telefono: data.telefono || "",
         correo_electronico: data.correo_electronico || "",
@@ -32,12 +35,12 @@ export const User = () => {
       console.error("Error fetching user data:", error);
     }
   };
-
+// se ejecuta al cargar el componente o cuando cambia el UID
   useEffect(() => {
     if (uid) {
       getUserData();
     }
-  }, [uid]);
+  }, [uid]);// Dependencia en el UID para ejecutar el efecto cuando cambie
 
   return (
     <main className={styles.userMain}>
