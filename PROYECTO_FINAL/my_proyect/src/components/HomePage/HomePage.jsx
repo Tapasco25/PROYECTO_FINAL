@@ -14,7 +14,7 @@ export default function HomePage() {
   };
   const navigate = useNavigate();
   useEffect(() => {
-    if (usuario) navigate("/App");
+    if (usuario) navigate("/");
     console.log("usuario del context", usuario);
   }, [usuario]);
 
